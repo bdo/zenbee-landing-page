@@ -63,15 +63,15 @@ const HomePage = ({ classes }) =>
   <div className={classes.root}>
     <div className={classes.header}>
       <div className={classes.logoSection}>
-        <img src={logo} height={45} />
+        <img src={logo} height={45} alt="Zenbee logo" />
       </div>
-      <img src={bee} className={classes.bee} />
+      <img src={bee} className={classes.bee} alt="" />
       <Typography type="display1" gutterBottom className={classes.titleSection}>
-        <img src={beeLeft} className={classes.beeLeft} />
+        <img src={beeLeft} className={classes.beeLeft} alt="" />
         Get the most
         <br />
         out of your trip
-        <img src={beeRight} className={classes.beeRight} />
+        <img src={beeRight} className={classes.beeRight} alt="" />
       </Typography>
       <Typography type="subheading" gutterBottom className={classes.subheading}>
         Your daily activities always

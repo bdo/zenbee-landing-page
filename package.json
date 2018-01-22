@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
-    "firebase:deploy": "firebase deploy",
+    "firebase:deploy": "firebase deploy --token=$FIREBASE_TOKEN --non-interactive",
     "deploy:staging": "FIREBASE_PROJECT=staging yarn build && yarn firebase:deploy",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

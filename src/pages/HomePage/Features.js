@@ -79,6 +79,11 @@ const styles = theme => ({
       transform: 'scale(0.75)'
     },
   },
+  '@media (max-width: 530px)': {
+    feature: {
+      width: '100%',
+    },
+  },
   featureText: {
     paddingLeft: 17,
     fontWeight: 'bold',

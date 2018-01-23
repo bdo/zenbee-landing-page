@@ -64,6 +64,20 @@ const styles = theme => ({
     userSelect: 'none',
   },
   featureIcon: {
+
+  },
+  '@media (max-width: 375px)': {
+    feature: {
+      width: '100%',
+      borderWidth: '2.5ch 2ch 0',
+    },
+    featureIconWrapper: {
+      width: 44,
+      height: 44,
+    },
+    featureIcon: {
+      transform: 'scale(0.75)'
+    },
   },
   featureText: {
     paddingLeft: 17,

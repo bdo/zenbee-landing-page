@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Typography } from 'material-ui'
 import { withStyles } from 'material-ui/styles'
-import withRoot from '../../withRoot'
 import logo from './images/zenbee-logo.png'
 import beeLeft from './images/bee-left.png'
 import beeRight from './images/bee-right.png'
@@ -65,14 +64,14 @@ const Header = ({ classes }) =>
       <img src={logo} height={45} alt="Zenbee logo" />
     </div>
     <img src={bee} className={classes.bee} alt="" />
-    <Typography type="display1" gutterBottom className={classes.titleSection}>
+    <Typography type="title" gutterBottom className={classes.titleSection}>
       <img src={beeLeft} className={classes.beeLeft} alt="" />
       Get the most
       <br />
       out of your trip
       <img src={beeRight} className={classes.beeRight} alt="" />
     </Typography>
-    <Typography type="subheading" gutterBottom className={classes.subheading}>
+    <Typography type="headline" gutterBottom className={classes.subheading}>
       Your daily activities always
       <br />
       optimized for you.
@@ -88,4 +87,4 @@ Header.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withRoot(withStyles(styles)(Header))
+export default withStyles(styles)(Header)

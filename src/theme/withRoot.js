@@ -7,21 +7,28 @@ import {
   createGenerateClassName,
   jssPreset,
 } from 'material-ui/styles'
-import './theme/fonts/Graphik-Medium.css'
+import './fonts/Graphik-Medium.css'
 import deepOrange from 'material-ui/colors/deepOrange'
 import blue from 'material-ui/colors/blue'
 import Reboot from 'material-ui/Reboot'
 
-const pastelRed =  'rgb(252, 103, 105)'
+const pastelRed =  {
+  300: '#ff9997',
+  500: 'rgb(252, 103, 105)',
+  700: '#f44336',
+}
 const moonsoon = 'rgb(119, 119, 119)'
 
 const theme = createMuiTheme({
   palette: {
+    background: {
+      default: '#f3f1f1',
+    },
     primary: {
       contrastText: "white",
-      light: deepOrange[300],
-      main: pastelRed,
-      dark: deepOrange[700],
+      light: pastelRed[300],
+      main: pastelRed[500],
+      dark: pastelRed[700],
     },
     secondary: {
       light: blue[300],
@@ -43,35 +50,33 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: 'Comfortaa',
-    display1: {
+    title: {
       color: pastelRed,
       fontSize: '2.32em',
       fontWeight: 'bold',
     },
-    subheading: {
-      fontWeight: 'bold',
+    headline: {
       color: moonsoon,
+      fontSize: '1rem',
+      lineHeight: '1.5rem',
     },
+    subheading: {
+      color: pastelRed[500],
+      fontSize: '1.15rem',
+      fontWeight: 'bold',
+    }
   }
 })
 
-// Create a JSS instance with the default preset of plugins.
-// It's optional.
 const jss = create(jssPreset())
 
-// The standard class name generator.
-// It's optional.
 const generateClassName = createGenerateClassName()
 
 function withRoot(Component) {
   function WithRoot(props) {
-    // JssProvider allows customizing the JSS styling solution.
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        {/* MuiThemeProvider makes the theme available down the React tree
-          thanks to React context. */}
         <MuiThemeProvider theme={theme}>
-          {/* Reboot kickstart an elegant, consistent, and simple baseline to build upon. */}
           <Reboot />
           <Component {...props} />
         </MuiThemeProvider>

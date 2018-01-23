@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import withRoot from '../../withRoot'
 import picture1 from './images/picture-1.jpg'
 import picture2 from './images/picture-2.jpg'
 import picture3 from './images/picture-3.jpg'
@@ -9,7 +8,7 @@ import picture4 from './images/picture-4.jpg'
 
 const styles = theme => ({
   pictures: {
-    padding: 0,
+    padding: '0 0 46px 0',
     marginLeft: '-5%',
     marginRight: '-5%',
     marginTop: theme.spacing.unit * 2,
@@ -68,4 +67,4 @@ Pictures.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withRoot(withStyles(styles)(Pictures))
+export default withStyles(styles)(Pictures)

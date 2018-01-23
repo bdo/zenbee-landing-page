@@ -8,7 +8,6 @@ import {
   jssPreset,
 } from 'material-ui/styles'
 import './fonts/Graphik-Medium.css'
-import deepOrange from 'material-ui/colors/deepOrange'
 import blue from 'material-ui/colors/blue'
 import Reboot from 'material-ui/Reboot'
 

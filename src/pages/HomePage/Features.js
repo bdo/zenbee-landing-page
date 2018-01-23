@@ -83,7 +83,7 @@ const Features = ({ classes }) =>
     <div className={classes.list}>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={weatherIcon} />
+          <img className={classes.featureIcon} src={weatherIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
           Weather forecasts
@@ -91,7 +91,7 @@ const Features = ({ classes }) =>
       </div>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={timeIcon} />
+          <img className={classes.featureIcon} src={timeIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
           Waiting time everywhere
@@ -99,7 +99,7 @@ const Features = ({ classes }) =>
       </div>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={advicesIcon} />
+          <img className={classes.featureIcon} src={advicesIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
           Blogger's advices
@@ -107,7 +107,7 @@ const Features = ({ classes }) =>
       </div>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={shoppingIcon} />
+          <img className={classes.featureIcon} src={shoppingIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
           Shopping
@@ -115,7 +115,7 @@ const Features = ({ classes }) =>
       </div>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={restaurantsIcon} />
+          <img className={classes.featureIcon} src={restaurantsIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
           Street food & restaurants
@@ -123,7 +123,7 @@ const Features = ({ classes }) =>
       </div>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={monumentsIcon} />
+          <img className={classes.featureIcon} src={monumentsIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
           Monuments
@@ -131,7 +131,7 @@ const Features = ({ classes }) =>
       </div>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={eventsIcon} />
+          <img className={classes.featureIcon} src={eventsIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
           Events
@@ -139,7 +139,7 @@ const Features = ({ classes }) =>
       </div>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={transportsIcon} />
+          <img className={classes.featureIcon} src={transportsIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
           Transports

@@ -13,7 +13,7 @@ import weatherIcon from './icons/ico-weather.svg'
 
 const styles = theme => ({
   features: {
-    margin: `${theme.spacing.unit * 12}px 25px ${theme.spacing.unit * 16}px`,
+    margin: `${theme.spacing.unit * 5}px 25px ${theme.spacing.unit * 16}px`,
   },
   '@media (min-width: 640px)': {
     features: {

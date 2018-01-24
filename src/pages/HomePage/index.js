@@ -5,6 +5,7 @@ import withRoot from '../../theme/withRoot'
 import Header from './Header'
 import Pictures from './Pictures'
 import Features from './Features'
+import Form from './Form'
 
 const styles = () => ({
   root: {
@@ -26,6 +27,7 @@ const HomePage = ({ classes }) =>
     <Header />
     <Pictures />
     <Features />
+    <Form />
   </div>
 
 HomePage.propTypes = {

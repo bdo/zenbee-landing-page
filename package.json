@@ -10,7 +10,8 @@
     "react": "latest",
     "react-dom": "latest",
     "react-jss": "latest",
-    "react-scripts": "latest"
+    "react-scripts": "latest",
+    "react-scroll": "^1.7.6"
   },
   "scripts": {
     "start": "react-scripts start",

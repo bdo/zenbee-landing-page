@@ -6,6 +6,16 @@ import logo from './images/zenbee-logo.png'
 import beeLeft from './images/bee-left.png'
 import beeRight from './images/bee-right.png'
 import bee from './images/bee.png'
+import { scroller } from 'react-scroll'
+
+const scrollToForm = () => {
+  scroller.scrollTo('query-form', {
+    offset: -50,
+    duration: 800,
+    delay: 0,
+    smooth: 'easeInOutQuart',
+  })
+}
 
 const styles = theme => ({
   header: {
@@ -77,7 +87,7 @@ const Header = ({ classes }) =>
       optimized for you.
     </Typography>
     <div className={classes.button}>
-      <Button raised color="primary" onClick={this.handleClick}>
+      <Button raised color="primary" onClick={scrollToForm}>
         Start your trip
       </Button>
     </div>

@@ -40,10 +40,29 @@ const theme = createMuiTheme({
       raised: {
         borderRadius: 'calc(1.4em + 2 * 14px)',
         textTransform: 'none',
-        fontSize: '1.07em',
+        fontSize: '1.07rem',
         fontWeight: 'bold',
         padding: '14px 22px',
         boxShadow: '0 5px 5px 0px rgba(252, 103, 105, .25)',
+      },
+    },
+    MuiFormLabel: {
+      root: {
+        fontFamily: 'Graphik-Medium-Web',
+        fontSize: '0.7rem',
+        textTransform: 'uppercase',
+        color: '#87888c',
+      },
+    },
+    MuiInput: {
+      root: {
+        fontSize: '0.95rem',
+        color: '#5D5F65',
+      },
+    },
+    MuiMenuItem: {
+      root: {
+        fontSize: '0.95rem',
       },
     },
   },
@@ -51,7 +70,7 @@ const theme = createMuiTheme({
     fontFamily: 'Comfortaa',
     title: {
       color: pastelRed,
-      fontSize: '2.32em',
+      fontSize: '2.32rem',
       fontWeight: 'bold',
     },
     headline: {

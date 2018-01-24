@@ -13,11 +13,11 @@ import weatherIcon from './icons/ico-weather.svg'
 
 const styles = theme => ({
   features: {
-    margin: `${theme.spacing.unit * 5}px 25px ${theme.spacing.unit * 16}px`,
+    margin: `${theme.spacing.unit * 5}px 25px ${theme.spacing.unit * 5}px`,
   },
   '@media (min-width: 640px)': {
     features: {
-      margin: `${theme.spacing.unit * 12}px 11% ${theme.spacing.unit * 16}px`,
+      margin: `${theme.spacing.unit * 12}px 11% ${theme.spacing.unit * 10}px`,
     },
   },
   titleWrapper: {
@@ -37,9 +37,6 @@ const styles = theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     margin: '0 -2ch',
-    '> *:empty': {
-      height: 0,
-    },
   },
   feature: {
     width: 256,
@@ -50,6 +47,10 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    '&:empty': {
+      height: 0,
+      border: 0,
+    },
   },
   featureIconWrapper: {
     width: 66,

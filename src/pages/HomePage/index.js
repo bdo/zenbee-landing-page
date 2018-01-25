@@ -5,7 +5,7 @@ import withRoot from '../../theme/withRoot'
 import Header from './Header'
 import Pictures from './Pictures'
 import Features from './Features'
-import Form from './ZenbeeForm'
+import OrangeSection from './OrangeSection'
 
 const styles = () => ({
   root: {
@@ -27,7 +27,7 @@ const HomePage = ({ classes }) =>
     <Header />
     <Pictures />
     <Features />
-    <Form />
+    <OrangeSection />
   </div>
 
 HomePage.propTypes = {

@@ -8,13 +8,16 @@ import ZenbeeSelect from 'components/ZenbeeSelect'
 const styles = theme => ({
   form: {
     textAlign: 'initial',
-    margin: '0 12%',
     borderRadius: '8px 8px 0 0',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
+    margin: '0 25px',
+    '@media (min-width: 640px)': {
+      margin: '0 12%',
+    },
   },
   container: {
     display: 'flex',

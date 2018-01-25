@@ -57,6 +57,7 @@ const theme = createMuiTheme({
     MuiInput: {
       root: {
         fontSize: '0.95rem',
+        fontWeight: 'bold',
         color: '#5D5F65',
       },
     },

@@ -5,7 +5,7 @@ import withRoot from '../../theme/withRoot'
 import Header from './Header'
 import Pictures from './Pictures'
 import Features from './Features'
-import Form from './Form'
+import Form from './ZenbeeForm'
 
 const styles = () => ({
   root: {

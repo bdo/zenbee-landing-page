@@ -17,7 +17,7 @@ const styles = theme => ({
   },
   '@media (min-width: 640px)': {
     features: {
-      margin: `${theme.spacing.unit * 12}px 11% ${theme.spacing.unit * 10}px`,
+      margin: `${theme.spacing.unit * 12}px 11% ${theme.spacing.unit * 16}px`,
     },
   },
   titleWrapper: {
@@ -61,7 +61,7 @@ const styles = theme => ({
     justifyContent: 'center',
     position: 'relative',
     borderRadius: '50%',
-    backgroundColor: theme.palette.primary.main,
+    backgroundImage: 'linear-gradient(144deg, #ff6666, #fe6468)',
     userSelect: 'none',
   },
   featureIcon: {

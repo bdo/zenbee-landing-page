@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormControl, InputLabel, MenuItem, Select, TextField } from 'material-ui'
 import { withStyles } from 'material-ui/styles'
 import { Events as ScrollEvents } from 'react-scroll'
 import roundShape from './images/round-shape.svg'
+import ZenbeeNumberInput from 'components/ZenbeeNumberInput'
+import ZenbeeSelect from 'components/ZenbeeSelect'
 
 const styles = theme => ({
   formWrapper: {
@@ -68,42 +69,6 @@ const styles = theme => ({
     width: '100%',
   },
 })
-
-const ZenbeeSelect = ({
-                        className, label, name, container, values, value, handleChange, inputRef = () => {
-  }, id = `${name}-select`,
-                      }) =>
-  <FormControl className={className}>
-    <InputLabel htmlFor={id}>{label}</InputLabel>
-    <Select
-      inputRef={inputRef}
-      value={value}
-      onChange={handleChange(name)}
-      inputProps={{
-        name,
-        id,
-      }}
-    >
-      {Object.keys(values).map(key =>
-        <MenuItem key={key} value={key}>{values[key]}</MenuItem>,
-      )}
-    </Select>
-  </FormControl>
-
-const ZenbeeNumberInput = ({ className, label, name, value, handleChange, id = `${name}-input` }) =>
-  <FormControl className={className}>
-    <TextField
-      id={id}
-      label={label}
-      value={value}
-      onChange={handleChange(name)}
-      type="number"
-      InputLabelProps={{
-        shrink: true,
-      }}
-    />
-  </FormControl>
-
 
 class ZenbeeForm extends React.Component {
   state = {

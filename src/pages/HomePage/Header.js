@@ -76,10 +76,10 @@ const Header = ({ classes }) =>
     <img src={bee} className={classes.bee} alt="" />
     <Typography type="title" gutterBottom className={classes.titleSection}>
       <img src={beeLeft} className={classes.beeLeft} alt="" />
+      <img src={beeRight} className={classes.beeRight} alt="" />
       Get the most
       <br />
       out of your trip
-      <img src={beeRight} className={classes.beeRight} alt="" />
     </Typography>
     <Typography type="headline" gutterBottom className={classes.subheading}>
       Your daily activities always

@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import picture1 from './images/picture-1.jpg'
-import picture2 from './images/picture-2.jpg'
-import picture3 from './images/picture-3.jpg'
-import picture4 from './images/picture-4.jpg'
+import paris from './images/paris.jpg'
+import london from './images/london.jpg'
+import barcelona from './images/barcelona.jpg'
+import venice from './images/venice.jpg'
 
 const styles = theme => ({
   pictures: {
@@ -38,20 +38,20 @@ const styles = theme => ({
     },
   },
   picture1: {
-    backgroundImage: `url(${picture1})`,
+    backgroundImage: `url(${venice})`,
     marginLeft: 0,
   },
   picture2: {
     transform: 'translateY(30px)',
-    backgroundImage: `url(${picture2})`,
+    backgroundImage: `url(${paris})`,
   },
   picture3: {
     transform: 'translateY(14px)',
-    backgroundImage: `url(${picture3})`,
+    backgroundImage: `url(${barcelona})`,
   },
   picture4: {
     transform: 'translateY(46px)',
-    backgroundImage: `url(${picture4})`,
+    backgroundImage: `url(${london})`,
   },
 })
 

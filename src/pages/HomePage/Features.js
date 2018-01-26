@@ -64,11 +64,11 @@ const Features = ({ classes }) =>
       {features.map(({ icon, text }) =>
         <Feature key={text} icon={icon} text={text} />
       )}
-      <div className={classes.feature} />
-      <div className={classes.feature}/>
-      <div className={classes.feature}/>
-      <div className={classes.feature}/>
-      <div className={classes.feature}/>
+      <Feature />
+      <Feature />
+      <Feature />
+      <Feature />
+      <Feature />
     </div>
   </div>
 

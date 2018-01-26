@@ -58,12 +58,14 @@ const styles = theme => ({
     beeLeft: {
       display: 'block',
       position: 'absolute',
-      left: 'calc(50% - 640px)',
+      left: 0,
+      width: '25%',
     },
     beeRight: {
       display: 'block',
       position: 'absolute',
-      right: 'calc(50% - 400px - 5.2em)',
+      left: '75%',
+      width: '25%',
     },
   },
 })

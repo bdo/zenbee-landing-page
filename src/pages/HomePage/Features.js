@@ -127,10 +127,10 @@ const Features = ({ classes }) =>
       </div>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={shoppingIcon} alt="" />
+          <img className={classes.featureIcon} src={eventsIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
-          Shopping
+          Events
         </Typography>
       </div>
       <div className={classes.feature}>
@@ -151,10 +151,10 @@ const Features = ({ classes }) =>
       </div>
       <div className={classes.feature}>
         <div className={classes.featureIconWrapper}>
-          <img className={classes.featureIcon} src={eventsIcon} alt="" />
+          <img className={classes.featureIcon} src={shoppingIcon} alt="" />
         </div>
         <Typography type="body1" className={classes.featureText}>
-          Events
+          Shopping
         </Typography>
       </div>
       <div className={classes.feature}>

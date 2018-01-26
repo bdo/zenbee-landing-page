@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
+import { Button } from 'material-ui'
 import { Events as ScrollEvents } from 'react-scroll'
 import ZenbeeNumberInput from 'components/ZenbeeNumberInput'
 import ZenbeeSelect from 'components/ZenbeeSelect'
+import submitIcon from './icons/ico-submit.svg'
 
 const styles = theme => ({
   form: {
@@ -15,9 +17,13 @@ const styles = theme => ({
     justifyContent: 'center',
     backgroundColor: 'white',
     margin: '0 25px',
+    padding: theme.spacing.unit,
     '@media (min-width: 640px)': {
       margin: '0 12%',
+      paddingLeft: 3 * theme.spacing.unit,
+      paddingRight: 3 * theme.spacing.unit,
     },
+    paddingBottom: 14 * theme.spacing.unit,
   },
   container: {
     display: 'flex',
@@ -25,22 +31,32 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    margin: 3 * theme.spacing.unit,
+    margin: `${3 * theme.spacing.unit}px ${theme.spacing.unit}px`,
     width: '100%',
     '@media (min-width: 640px)': {
-      width: `calc(66% - ${2 * 3 * theme.spacing.unit}px)`,
+      width: `calc(66% - ${2 * theme.spacing.unit}px)`,
     },
   },
   formControlRight: {
-    margin: 3 * theme.spacing.unit,
+    margin: `${3 * theme.spacing.unit}px ${theme.spacing.unit}px`,
     width: '100%',
     '@media (min-width: 640px)': {
-      width: `calc(33% - ${2 * 3 * theme.spacing.unit}px)`,
+      width: `calc(33% - ${2 * theme.spacing.unit}px)`,
     },
   },
   formControlFullWidth: {
-    margin: 3 * theme.spacing.unit,
+    margin: `${3 * theme.spacing.unit}px ${theme.spacing.unit}px`,
     width: '100%',
+  },
+  submitButtonWrapper: {
+    width: '100%',
+    padding: `${3 * theme.spacing.unit}px ${theme.spacing.unit}px`,
+  },
+  submitButton: {
+    float: 'right',
+  },
+  submitIcon: {
+    marginLeft: theme.spacing.unit,
   },
 })
 
@@ -49,7 +65,7 @@ class ZenbeeForm extends React.Component {
     city: 'paris',
     days: 3,
     budget: 'low',
-    beenThere: 'never',
+    knowledge: 'newbie',
     travelWith: 'solo',
     voyagers: 2,
   }
@@ -103,7 +119,7 @@ class ZenbeeForm extends React.Component {
           <ZenbeeSelect
             className={classes.formControl}
             name="budget"
-            label="Budget (excluding hotel and shopping)"
+            label="What's your budget (excl. hotel and shopping)?"
             values={{
               low: 'Low (less than 100$)',
               medium: 'Medium (between 100$ and 200$)',
@@ -115,15 +131,15 @@ class ZenbeeForm extends React.Component {
           />
           <ZenbeeSelect
             className={classes.formControlRight}
-            name="beenThere"
-            label="I have been there"
+            name="knowledge"
+            label="How well do you know the place?"
             values={{
-              never: 'Never',
-              once: 'Once',
-              twice: 'Twice',
-              threeAndMore: 'More than three times',
+              newbie: 'Newbie',
+              intermediate: 'Intermediate',
+              advanced: 'Advanced',
+              expert: 'Expert',
             }}
-            value={this.state.beenThere}
+            value={this.state.knowledge}
             handleChange={this.handleChange}
           />
         </div>
@@ -131,7 +147,7 @@ class ZenbeeForm extends React.Component {
           <ZenbeeSelect
             className={this.needsToAskHowMany() ? classes.formControl : classes.formControlFullWidth}
             name="travelWith"
-            label="I travel with"
+            label="Who am I travelling with?"
             values={{
               family: 'Family',
               friends: 'Friends',
@@ -150,6 +166,12 @@ class ZenbeeForm extends React.Component {
               handleChange={this.handleChange}
             />
           )}
+        </div>
+        <div className={classes.submitButtonWrapper}>
+          <Button raised color="primary" className={classes.submitButton}>
+            Show me
+            <img src={submitIcon} alt="" className={classes.submitIcon} />
+          </Button>
         </div>
       </form>
     )

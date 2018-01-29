@@ -10,10 +10,9 @@ import { scroller } from 'react-scroll'
 
 const scrollToForm = () => {
   scroller.scrollTo('query-form', {
-    offset: -50,
     duration: 800,
     delay: 0,
-    smooth: 'easeInOutQuart',
+    smooth: 'easeInOut',
   })
 }
 

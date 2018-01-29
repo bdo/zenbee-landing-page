@@ -13,7 +13,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '8% 5% 16%',
+    padding: '8% 5% 32%',
   },
   title: {
     fontFamily: theme.typography.fontFamily,
@@ -204,7 +204,7 @@ class ZenbeeForm extends React.Component {
             <ZenbeeSelect
               className={classes.formControlFullWidth}
               name="budget"
-              label="What's your budget (excl. hotel and shopping)?"
+              label={<span>What's your budget <span style={{ textTransform: 'none' }}>(excl. hotel & shopping)</span>?</span>}
               values={{
                 low: 'Low (less than 100$)',
                 medium: 'Medium (between 100$ and 200$)',

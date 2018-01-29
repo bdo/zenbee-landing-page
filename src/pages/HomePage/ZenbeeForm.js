@@ -13,8 +13,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '5%',
-    paddingBottom: 14 * theme.spacing.unit,
+    padding: '8% 5% 16%',
   },
   title: {
     fontFamily: theme.typography.fontFamily,

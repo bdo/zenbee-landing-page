@@ -29,7 +29,7 @@ const styles = theme => ({
     margin: '0 auto'
   },
   items: {
-    margin: `${3 * theme.spacing.unit}px auto`,
+    margin: `${3 * theme.spacing.unit}px auto ${4 * theme.spacing.unit}px `,
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'column',

@@ -64,6 +64,7 @@ const styles = theme => ({
   },
   submitIcon: {
     marginLeft: theme.spacing.unit,
+    transform: 'scale(0.8) translateY(5px)',
   },
   '@media (min-width: 800px)': {
     formWrapper: {

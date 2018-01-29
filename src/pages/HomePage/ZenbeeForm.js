@@ -52,7 +52,7 @@ const styles = theme => ({
     width: '100%',
   },
   formControlFullWidth: {
-    margin: `0 ${theme.spacing.unit}px ${3 * theme.spacing.unit}px`,
+    margin: `0 ${theme.spacing.unit}px ${6 * theme.spacing.unit}px`,
     width: '100%',
   },
   submitButtonWrapper: {
@@ -159,20 +159,7 @@ class ZenbeeForm extends React.Component {
           </div>
           <div className={classes.container}>
             <ZenbeeSelect
-              className={classes.formControl}
-              name="budget"
-              label="What's your budget (excl. hotel and shopping)?"
-              values={{
-                low: 'Low (less than 100$)',
-                medium: 'Medium (between 100$ and 200$)',
-                high: 'High (between 200$ and 300$)',
-                veryHigh: 'Very high (more than 300$)',
-              }}
-              value={this.state.budget}
-              handleChange={this.handleChange}
-            />
-            <ZenbeeSelect
-              className={classes.formControlRight}
+              className={classes.formControlFullWidth}
               name="knowledge"
               label="How well do you know the place?"
               values={{
@@ -208,6 +195,21 @@ class ZenbeeForm extends React.Component {
                 handleChange={this.handleChange}
               />
             )}
+          </div>
+          <div className={classes.container}>
+            <ZenbeeSelect
+              className={classes.formControlFullWidth}
+              name="budget"
+              label="What's your budget (excl. hotel and shopping)?"
+              values={{
+                low: 'Low (less than 100$)',
+                medium: 'Medium (between 100$ and 200$)',
+                high: 'High (between 200$ and 300$)',
+                veryHigh: 'Very high (more than 300$)',
+              }}
+              value={this.state.budget}
+              handleChange={this.handleChange}
+            />
           </div>
           <div className={classes.submitButtonWrapper}>
             <Button raised color="primary" className={classes.submitButton}>

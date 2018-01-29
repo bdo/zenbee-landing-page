@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Typography } from 'material-ui'
 import { withStyles } from 'material-ui/styles'
-import Feature from './Feature'
+import Feature, { EmptyFeature } from './Feature'
 import advicesIcon from './icons/ico-advices.svg'
 import eventsIcon from './icons/ico-events.svg'
 import monumentsIcon from './icons/ico-monuments.svg'
@@ -22,6 +22,7 @@ const styles = theme => ({
     },
   },
   titleWrapper: {
+    marginBottom: '1.5rem',
     display: 'flex',
   },
   title: {
@@ -64,11 +65,14 @@ const Features = ({ classes }) =>
       {features.map(({ icon, text }) =>
         <Feature key={text} icon={icon} text={text} />
       )}
-      <Feature />
-      <Feature />
-      <Feature />
-      <Feature />
-      <Feature />
+      {
+        /*
+         * Add extra empty features (with 0 height) to keep
+         * consistent number of columns so that features are
+         * properly vertically aligned
+         */
+        Array.from(Array(4).keys()).map(() => <EmptyFeature />)
+      }
     </div>
   </div>
 

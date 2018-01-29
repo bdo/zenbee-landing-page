@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="379" height="222" viewBox="0 0 379 222">
+    <defs>
+        <path id="a" d="M64.098 24.75C64.098 11.081 52.957 0 39.213 0 25.47 0 15.11 11.383 15.11 30.274c0 10.785-12.651 28.99-14.496 38.528-3.093 15.994 16.874 30.559 38.6 23.263 28.944-9.719 24.884-65.311 24.884-67.315z"/>
+        <linearGradient id="c" x1="97.335%" x2="13.991%" y1="55.61%" y2="100%">
+            <stop offset="0%" stop-color="#FE9F5F"/>
+            <stop offset="100%" stop-color="#FE6468"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(287 13)">
+            <path fill="#CCF0FC" d="M27.132 46.23C5.98 49.475-2.804 46.728.778 37.987c3.583-8.74 12.368-5.992 26.354 8.243zM29.415 39.449C8.179 24.975 2.715 15.367 13.02 10.625c10.305-4.742 15.77 4.866 16.395 28.824z"/>
+            <path fill="#222" d="M39.424 89.377l-4.077 9.046 7.488-6.97z"/>
+            <g transform="translate(27.148)">
+                <mask id="b" fill="#fff">
+                    <use xlink:href="#a"/>
+                </mask>
+                <use fill="#FFD400" xlink:href="#a"/>
+                <path stroke="#222" stroke-width="10" d="M-4.525 55.5c18.263 25.924 41.577 31.854 69.942 17.79M-.754 41.25c18.263 25.924 41.576 31.854 69.941 17.79" mask="url(#b)"/>
+            </g>
+            <ellipse cx="63.721" cy="22.125" fill="#222" rx="2.639" ry="2.625"/>
+            <ellipse cx="62.59" cy="31.5" fill="#FDB100" rx="3.016" ry="3"/>
+            <ellipse cx="85.213" cy="31.5" fill="#FDB100" rx="3.016" ry="3"/>
+            <ellipse cx="83.328" cy="22.125" fill="#222" rx="2.639" ry="2.625"/>
+            <path fill="#222" d="M70.131 30c0 2.485 1.857 4.5 4.148 4.5 2.29 0 4.147-2.015 4.147-4.5"/>
+        </g>
+        <path stroke="url(#c)" stroke-dasharray="1,22" stroke-linecap="round" stroke-width="10" d="M0 185.868c85.317 32.618 157.629 34.7 216.934 6.247 88.959-42.68 108.577-157.76 73.782-185.824-34.794-28.065-100.675 43.945-40.765 94.173 59.91 50.229 131.587 44.825 187.049 5.331" transform="translate(-111 5)"/>
+    </g>
+</svg>

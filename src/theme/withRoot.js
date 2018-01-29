@@ -70,7 +70,7 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: 'Comfortaa',
     title: {
-      color: pastelRed,
+      color: pastelRed[500],
       fontSize: '2.32rem',
       fontWeight: 'bold',
     },

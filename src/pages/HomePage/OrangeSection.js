@@ -16,7 +16,6 @@ const styles = () => ({
     zIndex: 1,
   },
   formContent: {
-    textAlign: 'center',
     position: 'relative',
     zIndex: 2,
   },

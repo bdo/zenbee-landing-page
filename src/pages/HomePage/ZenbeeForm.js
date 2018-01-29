@@ -18,9 +18,9 @@ const styles = theme => ({
   title: {
     fontFamily: theme.typography.fontFamily,
     fontWeight: 'bold',
-    fontSize: '1.2rem',
+    fontSize: '4.5vw',
     width: '100%',
-    paddingBottom: '2rem',
+    paddingBottom: '10%',
     color: theme.palette.primary.main,
     '& br': {
       content: '" "',
@@ -59,7 +59,8 @@ const styles = theme => ({
     padding: `${3 * theme.spacing.unit}px ${theme.spacing.unit}px`,
   },
   submitButton: {
-    float: 'right',
+    display: 'block',
+    margin: 'O auto',
   },
   submitIcon: {
     marginLeft: theme.spacing.unit,
@@ -91,6 +92,9 @@ const styles = theme => ({
     },
     formControlRight: {
       width: `calc(33% - ${2 * theme.spacing.unit}px)`,
+    },
+    submitButton: {
+      float: 'right',
     },
   },
 })

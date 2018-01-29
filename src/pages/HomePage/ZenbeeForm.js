@@ -9,14 +9,12 @@ import submitIcon from './icons/ico-submit.svg'
 
 const styles = theme => ({
   formWrapper: {
-    borderRadius: '8px 8px 0 0',
     backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: '5%',
     paddingBottom: 14 * theme.spacing.unit,
-    margin: '0 25px',
   },
   title: {
     fontFamily: theme.typography.fontFamily,
@@ -69,9 +67,10 @@ const styles = theme => ({
   },
   '@media (min-width: 800px)': {
     formWrapper: {
+      borderRadius: '8px 8px 0 0',
       flexDirection: 'row',
       alignItems: 'flex-start',
-      margin: '0 12%',
+      margin: '0 8%',
       paddingBottom: 14 * theme.spacing.unit,
     },
     title: {
@@ -131,13 +130,13 @@ class ZenbeeForm extends React.Component {
   render() {
     const { classes } = this.props
     return (
-      <div className={classes.formWrapper}>
+      <div id="query-form" className={classes.formWrapper}>
         <div className={classes.title}>
           Create<br/>
           your trip<br/>
           in just a few seconds
         </div>
-        <form id="query-form" className={classes.form} autoComplete="off">
+        <form className={classes.form} autoComplete="off">
           <div className={classes.container}>
             <ZenbeeSelect
               className={classes.formControl}

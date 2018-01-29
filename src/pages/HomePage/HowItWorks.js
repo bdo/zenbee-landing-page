@@ -10,17 +10,18 @@ import heartIcon from './icons/ico-heart.svg'
 const styles = theme => ({
   howItWorks: {
     padding: `${4 * theme.spacing.unit}px 0 0`,
+    display: 'flex',
+    flexDirection: 'column',
   },
   howItWorksTitle: {
     padding: `7% 0 0`,
-    textAlign: 'center',
     fontFamily: theme.typography.fontFamily,
     fontWeight: 'bold',
     fontSize: '1.6rem',
     color: 'white',
+    margin: '0 auto'
   },
   howItWorksUnderline: {
-    textAlign: 'center',
     backgroundColor: 'white',
     marginTop: '4ch',
     width: '4ch',
@@ -28,7 +29,7 @@ const styles = theme => ({
     margin: '0 auto'
   },
   items: {
-    margin: `${3 * theme.spacing.unit}px 25px`,
+    margin: `${3 * theme.spacing.unit}px auto`,
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'column',

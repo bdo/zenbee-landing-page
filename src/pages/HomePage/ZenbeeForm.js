@@ -60,7 +60,7 @@ const styles = theme => ({
   },
   submitButton: {
     display: 'block',
-    margin: 'O auto',
+    margin: '0 auto',
   },
   submitIcon: {
     marginLeft: theme.spacing.unit,

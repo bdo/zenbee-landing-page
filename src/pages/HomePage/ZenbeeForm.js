@@ -9,11 +9,12 @@ import submitIcon from './icons/ico-submit.svg'
 
 const styles = theme => ({
   formWrapper: {
+    minHeight: '100vh',
     backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '8% 5% 32%',
+    padding: '8% 5%',
   },
   title: {
     fontFamily: theme.typography.fontFamily,
@@ -36,6 +37,7 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1,
   },
   container: {
     display: 'flex',
@@ -43,20 +45,23 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    margin: `0 ${theme.spacing.unit}px ${6 * theme.spacing.unit}px`,
+    margin: `0 ${theme.spacing.unit}px ${4 * theme.spacing.unit}px`,
     width: '100%',
   },
   formControlRight: {
-    margin: `0 ${theme.spacing.unit}px ${6 * theme.spacing.unit}px`,
+    margin: `0 ${theme.spacing.unit}px ${4 * theme.spacing.unit}px`,
     width: '100%',
   },
   formControlFullWidth: {
-    margin: `0 ${theme.spacing.unit}px ${6 * theme.spacing.unit}px`,
+    margin: `0 ${theme.spacing.unit}px ${4 * theme.spacing.unit}px`,
     width: '100%',
   },
   submitButtonWrapper: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
     width: '100%',
-    padding: `${3 * theme.spacing.unit}px ${theme.spacing.unit}px`,
+    padding: `${2 * theme.spacing.unit}px ${theme.spacing.unit}px`,
   },
   submitButton: {
     display: 'block',
@@ -68,6 +73,7 @@ const styles = theme => ({
   },
   '@media (min-width: 800px)': {
     formWrapper: {
+      minHeight: 'auto',
       borderRadius: '8px 8px 0 0',
       flexDirection: 'row',
       alignItems: 'flex-start',
@@ -93,6 +99,9 @@ const styles = theme => ({
     },
     formControlRight: {
       width: `calc(33% - ${2 * theme.spacing.unit}px)`,
+    },
+    submitButtonWrapper: {
+      display: 'block',
     },
     submitButton: {
       float: 'right',

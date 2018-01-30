@@ -18,7 +18,7 @@ const styles = theme => ({
   },
   '@media (min-width: 640px)': {
     features: {
-      margin: `${theme.spacing.unit * 12}px 11% ${theme.spacing.unit * 16}px`,
+      margin: `${theme.spacing.unit * 12}px 11% ${theme.spacing.unit * 12}px`,
     },
   },
   titleWrapper: {

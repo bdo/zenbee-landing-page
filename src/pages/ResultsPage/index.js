@@ -86,7 +86,7 @@ const HomePage = ({ classes }) =>
           about the evolution of the project,
           leave us your email address : )
         </p>
-        <EmailForm />
+        <EmailForm className={classes.form} />
       </aside>
       <aside className={classes.mobile}>
         <img className={classes.img} src={phoneImage} alt="mobile app"/>

@@ -2,7 +2,7 @@ import React from 'react'
 import { FormControl, InputLabel, MenuItem, Select } from 'material-ui'
 
 const ZenbeeSelect = ({ className, label, name, container, values, value, handleChange, inputRef, id = `${name}-select` }) =>
-  <FormControl className={className}>
+  <FormControl className={className} autoFocus>
     <InputLabel htmlFor={id}>{label}</InputLabel>
     <Select
       inputRef={inputRef}

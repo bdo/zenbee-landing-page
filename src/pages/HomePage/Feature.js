@@ -5,10 +5,7 @@ import { withStyles } from 'material-ui/styles'
 import InfoChip from 'components/InfoChip'
 
 const styles = theme => ({
-  infoChip: {
-    backgroundImage: 'linear-gradient(144deg, #ff6666, #fe6468)',
-  },
-  feature: {
+  root: {
     width: '50%',
     display: 'flex',
     alignItems: 'center',
@@ -19,6 +16,9 @@ const styles = theme => ({
       border: 0,
     },
   },
+  infoChip: {
+    backgroundImage: 'linear-gradient(144deg, #ff6666, #fe6468)',
+  },
   text: {
     paddingTop: '0.5rem',
     paddingBottom: '1.5rem',
@@ -27,19 +27,19 @@ const styles = theme => ({
     flex: 1,
   },
   '@media (min-width: 640px)': {
-    feature: {
+    root: {
       width: '33%',
     },
   },
   '@media (min-width: 800px)': {
-    feature: {
+    root: {
       width: '25%',
     },
   },
 })
 
 export const EmptyFeature = withStyles(styles)(
-  ({ classes }) => <div className={classes.feature} />
+  ({ classes }) => <div className={classes.root} />
 )
 
 EmptyFeature.propTypes = {
@@ -47,7 +47,7 @@ EmptyFeature.propTypes = {
 }
 
 const Feature = ({ classes, icon, text }) =>
-  <div className={classes.feature}>
+  <div className={classes.root}>
     {icon && (
       <InfoChip icon={icon} className={classes.infoChip} />
     )}

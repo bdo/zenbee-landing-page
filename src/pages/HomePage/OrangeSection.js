@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import roundShape from './images/round-shape.svg'
+import roundShape from 'theme/images/round-shape.svg'
 import HowItWorks from './HowItWorks'
 import ZenbeeForm from './ZenbeeForm'
 
 const styles = () => ({
-  formWrapper: {
+  root: {
     position: 'relative',
     overflow: 'hidden',
   },
@@ -22,7 +22,7 @@ const styles = () => ({
 })
 
 const OrangeSection = ({ classes }) =>
-  <div className={classes.formWrapper}>
+  <div className={classes.root}>
     <img className={classes.formShape} src={roundShape} alt=""/>
     <div className={classes.formContent}>
       <HowItWorks />

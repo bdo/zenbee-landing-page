@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from "react-router-dom"
 import { withStyles } from 'material-ui/styles'
 import { Button } from 'material-ui'
 import { Events as ScrollEvents } from 'react-scroll'
 import ZenbeeNumberInput from 'components/ZenbeeNumberInput'
 import ZenbeeSelect from 'components/ZenbeeSelect'
-import submitIcon from './icons/ico-submit.svg'
+import submitIcon from 'theme/icons/ico-submit.svg'
 
 const styles = theme => ({
-  formWrapper: {
+  root: {
     minHeight: '100vh',
     backgroundColor: 'white',
     display: 'flex',
@@ -72,7 +73,7 @@ const styles = theme => ({
     transform: 'scale(0.8) translateY(5px)',
   },
   '@media (min-width: 800px)': {
-    formWrapper: {
+    root: {
       minHeight: 'auto',
       borderRadius: '8px 8px 0 0',
       flexDirection: 'row',
@@ -110,6 +111,11 @@ const styles = theme => ({
 })
 
 class ZenbeeForm extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  }
+
   state = {
     city: 'paris',
     days: 3,
@@ -117,12 +123,14 @@ class ZenbeeForm extends React.Component {
     knowledge: 'newbie',
     travelWith: 'solo',
     voyagers: 2,
+    cityAutoFocus: false,
   }
 
   componentDidMount() {
     ScrollEvents.scrollEvent.register('end', to => {
+      console.log(to)
       if (to === 'query-form') {
-        this.cityRef.focus()
+        setTimeout(() => this.setState({ cityAutoFocus: true }), 1000)
       }
     })
   }
@@ -140,33 +148,39 @@ class ZenbeeForm extends React.Component {
     return ['friends', 'family'].includes(travelWith)
   }
 
+  onSubmit = () => {
+    const { history } = this.props
+    history.push('/results')
+  }
+
   render() {
     const { classes } = this.props
+    const { cityAutoFocus, city, days, knowledge, travelWith, voyagers, budget } = this.state
     return (
-      <div id="query-form" className={classes.formWrapper}>
+      <div id="query-form" className={classes.root}>
         <div className={classes.title}>
           Create<br/>
           your trip<br/>
           in just a few seconds
         </div>
-        <form className={classes.form} autoComplete="off">
+        <form className={classes.form} autoComplete="off" onSubmit={this.onSubmit}>
           <div className={classes.container}>
             <ZenbeeSelect
               className={classes.formControl}
               name="city"
               label="Where are you going?"
-              inputRef={ref => this.cityRef = ref.node}
               values={{
                 paris: 'Paris',
               }}
-              value={this.state['city']}
+              value={city}
               handleChange={this.handleChange}
+              autoFocus={cityAutoFocus}
             />
             <ZenbeeNumberInput
               className={classes.formControlRight}
               label="How many days?"
               name="days"
-              value={this.state.days}
+              value={days}
               handleChange={this.handleChange}
             />
           </div>
@@ -181,7 +195,7 @@ class ZenbeeForm extends React.Component {
                 advanced: 'Advanced',
                 expert: 'Expert',
               }}
-              value={this.state.knowledge}
+              value={knowledge}
               handleChange={this.handleChange}
             />
           </div>
@@ -196,7 +210,7 @@ class ZenbeeForm extends React.Component {
                 couple: 'Couple',
                 solo: 'Solo',
               }}
-              value={this.state.travelWith}
+              value={travelWith}
               handleChange={this.handleChange}
             />
             {this.needsToAskHowMany() && (
@@ -204,7 +218,7 @@ class ZenbeeForm extends React.Component {
                 className={classes.formControlRight}
                 label="Voyagers"
                 name="voyagers"
-                value={this.state.voyagers}
+                value={voyagers}
                 handleChange={this.handleChange}
               />
             )}
@@ -220,12 +234,12 @@ class ZenbeeForm extends React.Component {
                 high: 'High (between 200$ and 300$)',
                 veryHigh: 'Very high (more than 300$)',
               }}
-              value={this.state.budget}
+              value={budget}
               handleChange={this.handleChange}
             />
           </div>
           <div className={classes.submitButtonWrapper}>
-            <Button raised color="primary" className={classes.submitButton}>
+            <Button raised color="primary" className={classes.submitButton} type="submit">
               Show me
               <img src={submitIcon} alt="" className={classes.submitIcon} />
             </Button>
@@ -236,9 +250,4 @@ class ZenbeeForm extends React.Component {
   }
 }
 
-
-ZenbeeForm.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(ZenbeeForm)
+export default withRouter(withStyles(styles)(ZenbeeForm))

@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Typography } from 'material-ui'
 import { withStyles } from 'material-ui/styles'
-import logo from './images/zenbee-logo.png'
-import beeLeft from './images/bee-left.svg'
-import beeRight from './images/bee-right.svg'
-import bee from './images/bee.png'
+import logo from 'theme/images/zenbee-logo.png'
+import beeLeft from 'theme/images/bee-left.svg'
+import beeRight from 'theme/images/bee-right.svg'
+import bee from 'theme/images/bee.png'
 import { scroller } from 'react-scroll'
 
 const scrollToForm = () => {
@@ -17,7 +17,7 @@ const scrollToForm = () => {
 }
 
 const styles = theme => ({
-  header: {
+  root: {
     textAlign: 'center',
   },
   logoSection: {
@@ -70,7 +70,7 @@ const styles = theme => ({
 })
 
 const Header = ({ classes }) =>
-  <div className={classes.header}>
+  <div className={classes.root}>
     <div className={classes.logoSection}>
       <img src={logo} height={45} alt="Zenbee logo" />
     </div>

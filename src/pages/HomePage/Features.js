@@ -3,21 +3,21 @@ import PropTypes from 'prop-types'
 import { Typography } from 'material-ui'
 import { withStyles } from 'material-ui/styles'
 import Feature, { EmptyFeature } from './Feature'
-import advicesIcon from './icons/ico-advices.svg'
-import eventsIcon from './icons/ico-events.svg'
-import monumentsIcon from './icons/ico-monuments.svg'
-import restaurantsIcon from './icons/ico-restaurants.svg'
-import shoppingIcon from './icons/ico-shopping.svg'
-import timeIcon from './icons/ico-time.svg'
-import transportsIcon from './icons/ico-transports.svg'
-import weatherIcon from './icons/ico-weather.svg'
+import advicesIcon from 'theme/icons/ico-advices.svg'
+import eventsIcon from 'theme/icons/ico-events.svg'
+import monumentsIcon from 'theme/icons/ico-monuments.svg'
+import restaurantsIcon from 'theme/icons/ico-restaurants.svg'
+import shoppingIcon from 'theme/icons/ico-shopping.svg'
+import timeIcon from 'theme/icons/ico-time.svg'
+import transportsIcon from 'theme/icons/ico-transports.svg'
+import weatherIcon from 'theme/icons/ico-weather.svg'
 
 const styles = theme => ({
-  features: {
+  root: {
     margin: `${theme.spacing.unit * 5}px 25px ${theme.spacing.unit * 5}px`,
   },
   '@media (min-width: 640px)': {
-    features: {
+    root: {
       margin: `${theme.spacing.unit * 12}px 11% ${theme.spacing.unit * 12}px`,
     },
   },
@@ -54,7 +54,7 @@ const features = [
 ]
 
 const Features = ({ classes }) =>
-  <div className={classes.features}>
+  <div className={classes.root}>
     <div className={classes.titleWrapper}>
       <Typography type="subheading" gutterBottom className={classes.title}>
         All the useful information
@@ -71,7 +71,7 @@ const Features = ({ classes }) =>
          * consistent number of columns so that features are
          * properly vertically aligned
          */
-        Array.from(Array(4).keys()).map(() => <EmptyFeature />)
+        Array.from(Array(4).keys()).map(key => <EmptyFeature key={key} />)
       }
     </div>
   </div>

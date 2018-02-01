@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import classnames from 'classnames'
 
 const styles = theme => ({
-  wrapper: {
+  root: {
     width: 44,
     height: 44,
     flexShrink: 0,
@@ -19,7 +19,7 @@ const styles = theme => ({
     transform: 'scale(0.75)'
   },
   '@media (min-width: 640px)': {
-    wrapper: {
+    root: {
       width: 66,
       height: 66,
     },
@@ -31,7 +31,7 @@ const styles = theme => ({
 
 const InfoChip = ({ className, iconClassName, classes, icon }) =>
   <div
-    className={classnames(classes.wrapper, className)}
+    className={classnames(classes.root, className)}
   >
     <img
       className={classnames(classes.icon, iconClassName)}

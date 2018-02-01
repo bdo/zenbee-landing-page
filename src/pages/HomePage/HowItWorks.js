@@ -2,13 +2,13 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import InfoChip from 'components/InfoChip'
-import filtersIcon from './icons/ico-filters.svg'
-import mapIcon from './icons/ico-map.svg'
-import shareIcon from './icons/ico-share.svg'
-import heartIcon from './icons/ico-heart.svg'
+import filtersIcon from 'theme/icons/ico-filters.svg'
+import mapIcon from 'theme/icons/ico-map.svg'
+import shareIcon from 'theme/icons/ico-share.svg'
+import heartIcon from 'theme/icons/ico-heart.svg'
 
 const styles = theme => ({
-  howItWorks: {
+  root: {
     padding: `${4 * theme.spacing.unit}px 0 0`,
     display: 'flex',
     flexDirection: 'column',
@@ -161,7 +161,7 @@ const items = [
 
 
 const HowItWorks = ({ classes }) =>
-  <div className={classes.howItWorks}>
+  <div className={classes.root}>
     <div className={classes.howItWorksTitle}>
       How it works
     </div>
@@ -169,7 +169,7 @@ const HowItWorks = ({ classes }) =>
     <div className={classes.items}>
       <div className={classes.dashedLine} />
       {items.map(({ icon, text }) => (
-        <div className={classes.item}>
+        <div key={icon} className={classes.item}>
           <InfoChip className={classes.infoChip} iconClassName={classes.infoChipIcon} icon={icon} large />
           <div className={classes.text}>{text}</div>
         </div>

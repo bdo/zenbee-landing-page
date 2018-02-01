@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import paris from './images/paris.jpg'
-import london from './images/london.jpg'
-import barcelona from './images/barcelona.jpg'
-import venice from './images/venice.jpg'
+import paris from 'theme/images/paris.jpg'
+import london from 'theme/images/london.jpg'
+import barcelona from 'theme/images/barcelona.jpg'
+import venice from 'theme/images/venice.jpg'
 
 const styles = theme => ({
-  pictures: {
+  root: {
     padding: '0 0 46px 0',
     marginLeft: '-5%',
     marginRight: '-5%',
@@ -17,7 +17,7 @@ const styles = theme => ({
     justifyContent: 'space-around',
   },
   '@media (min-width: 768px)': {
-    pictures: {
+    root: {
       marginTop: theme.spacing.unit * 8,
       marginBottom: theme.spacing.unit * 8,
     },
@@ -56,7 +56,7 @@ const styles = theme => ({
 })
 
 const Pictures = ({ classes }) =>
-  <div className={classes.pictures}>
+  <div className={classes.root}>
     <div className={`${classes.picture} ${classes.picture1}`} />
     <div className={`${classes.picture} ${classes.picture2}`} />
     <div className={`${classes.picture} ${classes.picture3}`} />

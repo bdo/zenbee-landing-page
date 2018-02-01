@@ -12,7 +12,6 @@
     "react-dom": "latest",
     "react-jss": "latest",
     "react-router-dom": "^4.2.2",
-    "react-router-page-transition": "^3.0.2",
     "react-scripts": "latest",
     "react-scroll": "^1.7.6"
   },

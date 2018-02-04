@@ -1,5 +1,6 @@
 {
   "projects": {
-    "staging": "zenbee-57e70"
+    "qa": "zenbee-qa",
+    "production": "zenbee-57e70"
   }
 }

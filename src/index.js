@@ -5,15 +5,9 @@ import ScrollToTop from 'components/ScrollToTop'
 import * as firebase from 'firebase'
 import './main.css'
 import Routes from './routes'
+import config from './config'
 
-firebase.initializeApp({
-  apiKey: "AIzaSyDX96Ow2KbAK-hY-DysBVWkoA7Kf_3w-IA",
-  authDomain: "zenbee-57e70.firebaseapp.com",
-  databaseURL: "https://zenbee-57e70.firebaseio.com",
-  projectId: "zenbee-57e70",
-  storageBucket: "zenbee-57e70.appspot.com",
-  messagingSenderId: "633748144454"
-});
+firebase.initializeApp(config.firebase)
 
 render(
   <Router>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { IconButton, Toolbar, Tooltip, Typography } from 'material-ui'
+import { IconButton, Toolbar, Tooltip } from 'material-ui'
 import { withStyles } from 'material-ui/styles'
 import DeleteIcon from 'material-ui-icons/Delete'
 import FilterListIcon from 'material-ui-icons/FilterList'

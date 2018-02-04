@@ -2,19 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import phoneImage from 'theme/images/phone.png'
+import withOrangeRoot from 'theme/withOrangeRoot'
+import beeLeft from 'theme/images/bee-left-white-path.svg'
 import EmailForm from './EmailForm'
 
 const styles = theme => ({
   root: {
     maxWidth: 1280,
     minHeight: '100vh',
-    padding: '1rem 25px',
+    padding: '1rem 25px 60%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'initial',
     flexDirection: 'column',
     color: 'white',
-    backgroundImage: 'linear-gradient(to left, #f45553, #f47553)',
+    background: `
+      url("${beeLeft}") no-repeat bottom 5% left 10%/90%,
+      linear-gradient(to left, #f45553, #f47553)
+    `,
     fontFamily: theme.typography.fontFamily,
     fontSize: '80%',
   },
@@ -25,12 +30,12 @@ const styles = theme => ({
     justifyContent: 'center',
   },
   form: {
-    paddingTop: '2rem',
+    paddingTop: '1rem',
     '& p': {
       fontSize: '90%',
       fontWeight: 'bold',
       lineHeight: 1.4,
-    }
+    },
   },
   mobile: {
     display: 'none',
@@ -45,7 +50,12 @@ const styles = theme => ({
   },
   '@media (min-width: 640px)': {
     root: {
+      paddingBottom: 0,
       fontSize: '100%',
+      background: `
+      url("${beeLeft}") no-repeat bottom 5% left 1%/30%,
+      linear-gradient(to left, #f45553, #f47553)
+    `,
     },
     contents: {
       paddingTop: '4rem',
@@ -70,7 +80,7 @@ const styles = theme => ({
   },
 })
 
-const HomePage = ({ classes }) =>
+const ResultsPage = ({ classes }) =>
   <div className={classes.root}>
     <h1>
       Thank you for your interest
@@ -86,7 +96,7 @@ const HomePage = ({ classes }) =>
           about the evolution of the project,
           leave us your email address : )
         </p>
-        <EmailForm className={classes.form} />
+        <EmailForm />
       </aside>
       <aside className={classes.mobile}>
         <img className={classes.img} src={phoneImage} alt="mobile app"/>
@@ -97,8 +107,8 @@ const HomePage = ({ classes }) =>
     </aside>
   </div>
 
-HomePage.propTypes = {
+ResultsPage.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(HomePage)
+export default withOrangeRoot(withStyles(styles)(ResultsPage))

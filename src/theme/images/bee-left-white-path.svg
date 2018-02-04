@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="495px" height="222px" viewBox="0 0 495 222" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M64.098,24.75 C64.098,11.081 52.957,0 39.213,0 C25.47,0 15.11,11.383 15.11,30.274 C15.11,41.059 2.459,59.264 0.614,68.802 C-2.479,84.796 17.488,99.361 39.214,92.065 C68.158,82.346 64.098,26.754 64.098,24.75 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(5.000000, 5.000000)">
+            <g id="Group" transform="translate(398.000000, 8.000000)">
+                <path d="M27.132,46.23 C5.98,49.475 -2.804,46.728 0.778,37.987 C4.361,29.247 13.146,31.995 27.132,46.23 Z M29.415,39.449 C8.179,24.975 2.715,15.367 13.02,10.625 C23.325,5.883 28.79,15.491 29.415,39.449 Z" id="Shape" fill="#CCF0FC" fill-rule="nonzero"></path>
+                <polygon id="Shape" fill="#222222" fill-rule="nonzero" points="39.424 89.377 35.347 98.423 42.835 91.453"></polygon>
+                <g transform="translate(27.148000, 0.000000)">
+                    <g id="a-link" fill="#FFD400" fill-rule="nonzero">
+                        <path d="M64.098,24.75 C64.098,11.081 52.957,0 39.213,0 C25.47,0 15.11,11.383 15.11,30.274 C15.11,41.059 2.459,59.264 0.614,68.802 C-2.479,84.796 17.488,99.361 39.214,92.065 C68.158,82.346 64.098,26.754 64.098,24.75 Z" id="a"></path>
+                    </g>
+                    <g id="Clipped">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="a"></g>
+                        <path d="M-4.525,55.5 C13.738,81.424 37.052,87.354 65.417,73.29 M-0.754,41.25 C17.509,67.174 40.822,73.104 69.187,59.04" id="Shape" stroke="#222222" stroke-width="10" mask="url(#mask-2)"></path>
+                    </g>
+                </g>
+                <ellipse id="Oval" fill="#222222" fill-rule="nonzero" cx="63.721" cy="22.125" rx="2.639" ry="2.625"></ellipse>
+                <ellipse id="Oval" fill="#FDB100" fill-rule="nonzero" cx="62.59" cy="31.5" rx="3.016" ry="3"></ellipse>
+                <ellipse id="Oval" fill="#FDB100" fill-rule="nonzero" cx="85.213" cy="31.5" rx="3.016" ry="3"></ellipse>
+                <ellipse id="Oval" fill="#222222" fill-rule="nonzero" cx="83.328" cy="22.125" rx="2.639" ry="2.625"></ellipse>
+                <path d="M70.131,30 C70.131,32.485 71.988,34.5 74.279,34.5 C76.569,34.5 78.426,32.485 78.426,30" id="Shape" fill="#222222" fill-rule="nonzero"></path>
+            </g>
+            <path d="M0,185.868 C85.317,218.486 157.629,220.568 216.934,192.115 C305.893,149.435 325.511,34.355 290.716,6.291 C255.922,-21.774 190.041,50.236 249.951,100.464 C309.861,150.693 381.538,145.289 437,105.795" id="Shape" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-dasharray="1,22"></path>
+        </g>
+    </g>
+</svg>

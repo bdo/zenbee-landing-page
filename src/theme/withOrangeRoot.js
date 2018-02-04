@@ -1,14 +1,9 @@
 import React from 'react'
-import { create } from 'jss'
-import JssProvider from 'react-jss/lib/JssProvider'
 import {
   MuiThemeProvider,
   createMuiTheme,
-  createGenerateClassName,
-  jssPreset,
 } from 'material-ui/styles'
 import './fonts/Graphik-Medium.css'
-import blue from 'material-ui/colors/blue'
 
 const pastelRed =  {
   300: '#ff9997',
@@ -19,31 +14,25 @@ const moonsoon = 'rgb(119, 119, 119)'
 
 const theme = createMuiTheme({
   palette: {
-    type: 'light',
-    background: {
-      default: 'white',
-    },
+    type: 'dark',
     primary: {
       contrastText: pastelRed[500],
-      light: 'white',
-      main: 'white',
-      dark: 'white',
-    },
-    secondary: {
-      light: blue[300],
-      main: blue[500],
-      dark: blue[700],
+      light: 'rgba(255, 255,255, 0.8)',
+      main: 'rgba(255, 255,255, 0.9)',
+      dark: 'rgba(255, 255,255, 1.0)',
     },
   },
   overrides: {
     MuiButton: {
+      root: {
+        boxShadow: '0 4px 10px 0 rgba(0, 0, 0, 0.1)',
+      },
       raised: {
         borderRadius: 'calc(1.4em + 2 * 14px)',
         textTransform: 'none',
         fontSize: '1.07rem',
         fontWeight: 'bold',
         padding: '14px 22px',
-        boxShadow: '0 5px 5px 0px rgba(252, 103, 105, .25)',
       },
     },
     MuiFormLabel: {
@@ -98,18 +87,12 @@ const theme = createMuiTheme({
   }
 })
 
-const jss = create(jssPreset())
-
-const generateClassName = createGenerateClassName()
-
 function withRoot(Component) {
   function WithRoot(props) {
     return (
-      <JssProvider jss={jss} generateClassName={generateClassName}>
-        <MuiThemeProvider theme={theme}>
-          <Component {...props} />
-        </MuiThemeProvider>
-      </JssProvider>
+      <MuiThemeProvider theme={theme}>
+        <Component {...props} />
+      </MuiThemeProvider>
     )
   }
 

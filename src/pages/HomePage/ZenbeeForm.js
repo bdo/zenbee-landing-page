@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from "react-router-dom"
+import { withRouter } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles'
 import { Button } from 'material-ui'
 import { Events as ScrollEvents } from 'react-scroll'
+import { Formik } from 'formik'
+import { compose } from 'recompose'
 import ZenbeeNumberInput from 'components/ZenbeeNumberInput'
 import ZenbeeSelect from 'components/ZenbeeSelect'
 import submitIcon from 'theme/icons/ico-submit.svg'
+import * as firebase from 'firebase'
+import 'firebase/firestore'
 
 const styles = theme => ({
   root: {
@@ -116,19 +120,8 @@ class ZenbeeForm extends React.Component {
     history: PropTypes.object.isRequired,
   }
 
-  state = {
-    city: 'paris',
-    days: 3,
-    budget: 'low',
-    knowledge: 'newbie',
-    travelWith: 'solo',
-    voyagers: 2,
-    cityAutoFocus: false,
-  }
-
   componentDidMount() {
     ScrollEvents.scrollEvent.register('end', to => {
-      console.log(to)
       if (to === 'query-form') {
         setTimeout(() => this.setState({ cityAutoFocus: true }), 1000)
       }
@@ -139,23 +132,12 @@ class ZenbeeForm extends React.Component {
     ScrollEvents.scrollEvent.remove('end')
   }
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value })
-  }
-
-  needsToAskHowMany() {
-    const { travelWith } = this.state
+  needsToAskHowMany(travelWith) {
     return ['friends', 'family'].includes(travelWith)
   }
 
-  onSubmit = () => {
-    const { history } = this.props
-    history.push('/results')
-  }
-
   render() {
-    const { classes } = this.props
-    const { cityAutoFocus, city, days, knowledge, travelWith, voyagers, budget } = this.state
+    const { classes, history } = this.props
     return (
       <div id="query-form" className={classes.root}>
         <div className={classes.title}>
@@ -163,91 +145,124 @@ class ZenbeeForm extends React.Component {
           your trip<br/>
           in just a few seconds
         </div>
-        <form className={classes.form} autoComplete="off" onSubmit={this.onSubmit}>
-          <div className={classes.container}>
-            <ZenbeeSelect
-              className={classes.formControl}
-              name="city"
-              label="Where are you going?"
-              values={{
-                paris: 'Paris',
-              }}
-              value={city}
-              handleChange={this.handleChange}
-              autoFocus={cityAutoFocus}
-            />
-            <ZenbeeNumberInput
-              className={classes.formControlRight}
-              label="How many days?"
-              name="days"
-              value={days}
-              handleChange={this.handleChange}
-            />
-          </div>
-          <div className={classes.container}>
-            <ZenbeeSelect
-              className={classes.formControlFullWidth}
-              name="knowledge"
-              label="How well do you know the place?"
-              values={{
-                newbie: 'Newbie',
-                intermediate: 'Intermediate',
-                advanced: 'Advanced',
-                expert: 'Expert',
-              }}
-              value={knowledge}
-              handleChange={this.handleChange}
-            />
-          </div>
-          <div className={classes.container}>
-            <ZenbeeSelect
-              className={this.needsToAskHowMany() ? classes.formControl : classes.formControlFullWidth}
-              name="travelWith"
-              label="Who am I travelling with?"
-              values={{
-                family: 'Family',
-                friends: 'Friends',
-                couple: 'Couple',
-                solo: 'Solo',
-              }}
-              value={travelWith}
-              handleChange={this.handleChange}
-            />
-            {this.needsToAskHowMany() && (
-              <ZenbeeNumberInput
-                className={classes.formControlRight}
-                label="Voyagers"
-                name="voyagers"
-                value={voyagers}
-                handleChange={this.handleChange}
-              />
-            )}
-          </div>
-          <div className={classes.container}>
-            <ZenbeeSelect
-              className={classes.formControlFullWidth}
-              name="budget"
-              label={<span>What's your budget <span style={{ textTransform: 'none' }}>(excl. hotel & shopping)</span>?</span>}
-              values={{
-                low: 'Low (less than 100$)',
-                medium: 'Medium (between 100$ and 200$)',
-                high: 'High (between 200$ and 300$)',
-                veryHigh: 'Very high (more than 300$)',
-              }}
-              value={budget}
-              handleChange={this.handleChange}
-            />
-          </div>
-          <div className={classes.submitButtonWrapper}>
-            <Button raised color="primary" className={classes.submitButton} type="submit">
-              Show me
-              <img src={submitIcon} alt="" className={classes.submitIcon} />
-            </Button>
-          </div>
-        </form>
+        <Formik
+          initialValues={{
+            city: 'paris',
+            days: 3,
+            knowledge: 'newbie',
+            travelWith: 'solo',
+            voyagers: 2,
+            budget: 'low',
+          }}
+          onSubmit={async (values, { setSubmitting }) => {
+            const formData = { ...values }
+            if (!this.needsToAskHowMany(values.travelWith)) {
+              formData.voyagers = 2
+            }
+            formData.createdAt = new Date()
+            const docRef = await firebase
+              .firestore()
+              .collection('betaUsers')
+              .add(formData)
+            setSubmitting(false)
+            history.push({ pathname: '/results', state: { formId: docRef.id } })
+          }}
+          render={({ values, handleSubmit, handleChange, handleBlur, isSubmitting, errors }) =>
+            <form className={classes.form} autoComplete="off" onSubmit={handleSubmit}>
+              <div className={classes.container}>
+                <ZenbeeSelect
+                  className={classes.formControl}
+                  name="city"
+                  label="Where are you going?"
+                  values={{
+                    paris: 'Paris',
+                  }}
+                  value={values.city}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <ZenbeeNumberInput
+                  className={classes.formControlRight}
+                  label="How many days?"
+                  name="days"
+                  value={values.days}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
+              <div className={classes.container}>
+                <ZenbeeSelect
+                  className={classes.formControlFullWidth}
+                  name="knowledge"
+                  label="How well do you know the place?"
+                  values={{
+                    newbie: 'Newbie',
+                    intermediate: 'Intermediate',
+                    advanced: 'Advanced',
+                    expert: 'Expert',
+                  }}
+                  value={values.knowledge}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
+              <div className={classes.container}>
+                <ZenbeeSelect
+                  className={this.needsToAskHowMany(values.travelWith) ? classes.formControl : classes.formControlFullWidth}
+                  name="travelWith"
+                  label="Who am I travelling with?"
+                  values={{
+                    family: 'Family',
+                    friends: 'Friends',
+                    couple: 'Couple',
+                    solo: 'Solo',
+                  }}
+                  value={values.travelWith}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {this.needsToAskHowMany(values.travelWith) && (
+                  <ZenbeeNumberInput
+                    className={classes.formControlRight}
+                    label="Voyagers"
+                    name="voyagers"
+                    value={values.voyagers}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                )}
+              </div>
+              <div className={classes.container}>
+                <ZenbeeSelect
+                  className={classes.formControlFullWidth}
+                  name="budget"
+                  label={<span>What's your budget <span style={{ textTransform: 'none' }}>(excl. hotel & shopping)</span>?</span>}
+                  values={{
+                    low: 'Low (less than 100$)',
+                    medium: 'Medium (between 100$ and 200$)',
+                    high: 'High (between 200$ and 300$)',
+                    veryHigh: 'Very high (more than 300$)',
+                  }}
+                  value={values.budget}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
+              <div className={classes.submitButtonWrapper}>
+                <Button raised color="primary" className={classes.submitButton} type="submit" disabled={isSubmitting}>
+                  Show me
+                  <img src={submitIcon} alt="" className={classes.submitIcon}/>
+                </Button>
+              </div>
+            </form>
+          }
+        />
       </div>
     )
   }
 }
 
-export default withRouter(withStyles(styles)(ZenbeeForm))
+export default compose(
+  withRouter,
+  withStyles(styles),
+)(ZenbeeForm)

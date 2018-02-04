@@ -8,7 +8,6 @@ import {
   jssPreset,
 } from 'material-ui/styles'
 import './fonts/Graphik-Medium.css'
-import blue from 'material-ui/colors/blue'
 import Reboot from 'material-ui/Reboot'
 
 const pastelRed =  {
@@ -28,11 +27,6 @@ const theme = createMuiTheme({
       light: pastelRed[300],
       main: pastelRed[500],
       dark: pastelRed[700],
-    },
-    secondary: {
-      light: blue[300],
-      main: blue[500],
-      dark: blue[700],
     },
   },
   overrides: {

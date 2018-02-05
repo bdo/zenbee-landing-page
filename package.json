@@ -26,7 +26,7 @@
     "firebase:login": "firebase login --reauth",
     "firebase:deploy": "firebase deploy --token=$FIREBASE_TOKEN --non-interactive --project $FIREBASE_PROJECT",
     "deploy:qa": "REACT_APP_ENV=qa yarn build && FIREBASE_PROJECT=qa yarn firebase:deploy",
-    "deploy:staging": "REACT_APP_ENV=production yarn build && FIREBASE_PROJECT=production yarn firebase:deploy",
+    "deploy:production": "REACT_APP_ENV=production yarn build && FIREBASE_PROJECT=production yarn firebase:deploy",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

@@ -6,11 +6,10 @@ import {
   TableRow,
   TableSortLabel,
 } from 'material-ui/Table'
-import Checkbox from 'material-ui/Checkbox'
 import Tooltip from 'material-ui/Tooltip'
 
 const columnData = [
-  { id: 'createdAt', numeric: false, disablePadding: true, label: 'Time' },
+  { id: 'createdAt', numeric: false, disablePadding: false, label: 'Time' },
   { id: 'city', numeric: false, disablePadding: false, label: 'City' },
   { id: 'days', numeric: true, disablePadding: false, label: 'Days' },
   { id: 'knowledge', numeric: false, disablePadding: false, label: 'Knowledge' },
@@ -26,18 +25,11 @@ class EnhancedTableHead extends React.Component {
   }
 
   render() {
-    const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props
+    const { order, orderBy } = this.props
 
     return (
       <TableHead>
         <TableRow>
-          <TableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected > 0 && numSelected === rowCount}
-              onChange={onSelectAllClick}
-            />
-          </TableCell>
           {columnData.map(column => {
             return (
               <TableCell
@@ -69,9 +61,7 @@ class EnhancedTableHead extends React.Component {
 }
 
 EnhancedTableHead.propTypes = {
-  numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.string.isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,

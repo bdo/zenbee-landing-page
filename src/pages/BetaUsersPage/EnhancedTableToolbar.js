@@ -10,12 +10,6 @@ const toolbarStyles = theme => ({
   root: {
     paddingRight: theme.spacing.unit,
   },
-  highlight: {
-    backgroundColor: theme.palette.primary.main,
-    '& > *': {
-      color: 'white',
-    },
-  },
   title: {
     fontFamily: theme.typography.fontFamily,
     flex: '0 0 auto',
@@ -33,34 +27,19 @@ const toolbarStyles = theme => ({
     flex: '1 1 100%',
   },
   actions: {
-    color: theme.palette.text.secondary,
   },
   deleteIcon: {
     color: 'white',
   },
 })
 
-const EnhancedTableToolbar = ({ numSelected, classes, title }) =>
-  <Toolbar className={classNames(classes.root, { [classes.highlight]: numSelected > 0 })}>
+const EnhancedTableToolbar = ({ classes, title }) =>
+  <Toolbar className={classes.root}>
     <div className={classes.title}>
       <div className={classes.heading}>{title}</div>
-      {numSelected > 0 && <div className={classes.subheading}>{numSelected} selected</div>}
     </div>
     <div className={classes.spacer} />
     <div className={classes.actions}>
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon className={classes.deleteIcon} />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton aria-label="Filter list">
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
-      )}
     </div>
   </Toolbar>
 

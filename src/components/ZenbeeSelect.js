@@ -4,7 +4,6 @@ import { MenuItem, TextField } from 'material-ui'
 const ZenbeeSelect = ({ name, values, onBlur, ...props }) =>
   <TextField
     select
-    name={name}
     inputProps={{
       onBlur,
     }}

@@ -44,20 +44,20 @@ const styles = theme => ({
 
 const features = [
   { icon: weatherIcon, text: 'Weather forecasts' },
-  { icon: timeIcon, text: 'Waiting time everywhere' },
-  { icon: advicesIcon, text: 'Blogger\'s advices' },
+  { icon: timeIcon, text: 'Waiting time' },
+  { icon: advicesIcon, text: 'Local blogs advice' },
   { icon: eventsIcon, text: 'Events' },
-  { icon: restaurantsIcon, text: 'Street food & restaurants' },
+  { icon: restaurantsIcon, text: 'Restaurants' },
   { icon: monumentsIcon, text: 'Monuments' },
   { icon: shoppingIcon, text: 'Shopping' },
-  { icon: transportsIcon, text: 'Transports' },
+  { icon: transportsIcon, text: 'Transport' },
 ]
 
 const Features = ({ classes }) =>
   <div className={classes.root}>
     <div className={classes.titleWrapper}>
       <Typography type="subheading" gutterBottom className={classes.title}>
-        All the useful information
+        All aspects taken into account
       </Typography>
       <div className={classes.hr} />
     </div>

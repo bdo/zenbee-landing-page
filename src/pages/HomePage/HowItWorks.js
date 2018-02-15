@@ -143,7 +143,7 @@ const styles = theme => ({
 const items = [
   {
     icon: filtersIcon,
-    text: <Fragment>Define your<br/>preferences</Fragment>,
+    text: <Fragment>Tell your<br/>preferences</Fragment>,
   },
   {
     icon: mapIcon,

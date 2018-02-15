@@ -58,13 +58,13 @@ const styles = theme => ({
       display: 'block',
       position: 'absolute',
       left: 0,
-      width: '25%',
+      width: 'calc((100% - 240px) / 3)',
     },
     beeRight: {
       display: 'block',
       position: 'absolute',
       left: '75%',
-      width: '25%',
+      width: 'calc((100% - 240px) / 3)',
     },
   },
 })
@@ -78,18 +78,16 @@ const Header = ({ classes }) =>
     <Typography type="title" gutterBottom className={classes.titleSection}>
       <img src={beeLeft} className={classes.beeLeft} alt="" />
       <img src={beeRight} className={classes.beeRight} alt="" />
-      Get the most
-      <br />
-      out of your trip
+      Optimize you trip
     </Typography>
     <Typography type="headline" gutterBottom className={classes.subheading}>
-      Your daily activities always
+      Prepare simply and efficiently
       <br />
-      optimized for you.
+      your stay in the big touristic cities.
     </Typography>
     <div className={classes.button}>
       <Button raised color="primary" onClick={scrollToForm}>
-        Start your trip
+        Start
       </Button>
     </div>
   </div>

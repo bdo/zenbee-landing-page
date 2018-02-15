@@ -92,9 +92,9 @@ const ResultsPage = ({ classes }) =>
           We are not fully ready yet.
         </h2>
         <p>
-          To be part of our beta testers and know more
-          about the evolution of the project,
-          leave us your email address : )
+          To be part of our beta testers and be informed
+          about the release of the service,
+          please leave us your email address : )
         </p>
         <EmailForm />
       </aside>

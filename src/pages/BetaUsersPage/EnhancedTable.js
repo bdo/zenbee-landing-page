@@ -30,6 +30,7 @@ class EnhancedTable extends React.Component {
   state = {
     order: 'desc',
     orderBy: 'createdAt',
+    selected: [],
     data: [],
     page: 0,
     rowsPerPage: 5,
@@ -61,6 +62,35 @@ class EnhancedTable extends React.Component {
       data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1))
   }
 
+  handleSelectAllClick = (event, checked) => {
+    if (checked) {
+      this.setState({ selected: this.state.data.map(n => n.id) })
+      return
+    }
+    this.setState({ selected: [] })
+  }
+
+  handleClick = (event, id) => {
+    const { selected } = this.state
+    const selectedIndex = selected.indexOf(id)
+    let newSelected = []
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, id)
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1))
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1))
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1),
+      )
+    }
+
+    this.setState({ selected: newSelected })
+  }
+
   handleChangePage = (event, page) => {
     this.setState({ page })
   }
@@ -69,32 +99,43 @@ class EnhancedTable extends React.Component {
     this.setState({ rowsPerPage: event.target.value })
   }
 
+  isSelected = id => this.state.selected.indexOf(id) !== -1
+
   render() {
     const { classes, title } = this.props
-    const { data, order, orderBy, rowsPerPage, page } = this.state
+    const { data, order, orderBy, selected, rowsPerPage, page } = this.state
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage)
 
     return (
       <div className={classes.root}>
-        <EnhancedTableToolbar title={title} />
+        <EnhancedTableToolbar numSelected={selected.length} title={title} />
         <div className={classes.tableWrapper}>
           <Table className={classes.table}>
             <EnhancedTableHead
+              numSelected={selected.length}
               order={order}
               orderBy={orderBy}
+              onSelectAllClick={this.handleSelectAllClick}
               onRequestSort={this.handleRequestSort}
               rowCount={data.length}
             />
             <TableBody>
               {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
+                const isSelected = this.isSelected(n.id)
                 return (
                   <TableRow
                     hover
+                    onClick={event => this.handleClick(event, n.id)}
                     role="checkbox"
+                    aria-checked={isSelected}
                     tabIndex={-1}
                     key={n.id}
+                    selected={isSelected}
                   >
-                    <TableCell>{n.createdAt && formatRelative(n.createdAt, new Date())}</TableCell>
+                    <TableCell padding="checkbox">
+                      <Checkbox checked={isSelected} />
+                    </TableCell>
+                    <TableCell padding="none">{n.createdAt && formatRelative(n.createdAt, new Date())}</TableCell>
                     <TableCell>{n.city}</TableCell>
                     <TableCell numeric>{n.days}</TableCell>
                     <TableCell>{n.knowledge}</TableCell>
@@ -107,14 +148,14 @@ class EnhancedTable extends React.Component {
               })}
               {emptyRows > 0 && (
                 <TableRow style={{ height: 49 * emptyRows }}>
-                  <TableCell colSpan={8} />
+                  <TableCell colSpan={6} />
                 </TableRow>
               )}
             </TableBody>
             <TableFooter>
               <TableRow>
                 <TablePagination
-                  colSpan={8}
+                  style={{ columnSpan: 'all' }}
                   count={data.length}
                   rowsPerPage={rowsPerPage}
                   page={page}

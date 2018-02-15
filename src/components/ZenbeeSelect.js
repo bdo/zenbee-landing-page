@@ -1,7 +1,7 @@
 import React from 'react'
 import { MenuItem, TextField } from 'material-ui'
 
-const ZenbeeSelect = ({ name, values, onBlur, ...props }) =>
+const ZenbeeSelect = ({ values, onBlur, ...props }) =>
   <TextField
     select
     inputProps={{

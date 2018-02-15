@@ -105,7 +105,7 @@ const EmailForm = withFormik({
   },
   handleSubmit: async (values, { props, setSubmitting }) => {
     const { location, history } = props
-    const { formId } = location.state
+    const formId = location.state && location.state.formId
     const betaUsers = firebase.firestore().collection('betaUsers')
     if (formId) {
         await betaUsers.doc(formId).update({
@@ -113,7 +113,7 @@ const EmailForm = withFormik({
           updatedAt: new Date(),
         })
     } else {
-      await betaUsers.collection('betaUsers').add({
+      await betaUsers.add({
         email: values.email,
         createdAt: new Date(),
       })

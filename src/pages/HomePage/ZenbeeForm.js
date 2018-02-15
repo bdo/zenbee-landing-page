@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles'
 import { Button } from 'material-ui'
+import { Events as ScrollEvents } from 'react-scroll'
 import { Formik } from 'formik'
 import { compose } from 'recompose'
 import ZenbeeNumberInput from 'components/ZenbeeNumberInput'
@@ -113,127 +114,26 @@ const styles = theme => ({
   },
 })
 
-const needsToAskHowMany = travelWith => ['friends', 'family'].includes(travelWith)
-
-class InnerForm extends React.Component {
-  render() {
-    const { classes, values, touched, handleSubmit, handleChange, handleBlur, isSubmitting, errors } = this.props
-    return (
-      <form className={classes.form} autoComplete="off" onSubmit={handleSubmit}>
-        <div className={classes.container}>
-          <ZenbeeSelect
-            className={classes.formControl}
-            name="city"
-            label="Where are you going?"
-            values={{
-              amsterdam: 'Amsterdam',
-              barcelona: 'Barcelona',
-              berlin: 'Berlin',
-              florence: 'Florence',
-              london: 'London',
-              madrid: 'Madrid',
-              moscow: 'Moscow',
-              newyork: 'New York',
-              paris: 'Paris',
-              prague: 'Prague',
-              rome: 'Rome',
-              tokyo: 'Tokyo',
-              venice: 'Venice',
-              vienna: 'Vienna',
-              washington: 'Washington',
-            }}
-            value={values.city}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.city && !!errors.city}
-            helperText={errors.city}
-          />
-          <ZenbeeNumberInput
-            className={classes.formControlRight}
-            label="How many days?"
-            name="days"
-            min="1"
-            max="99"
-            value={values.days}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </div>
-        <div className={classes.container}>
-          <ZenbeeSelect
-            className={needsToAskHowMany(values.travelWith) ? classes.formControl : classes.formControlFullWidth}
-            name="travelWith"
-            label="Who are you travelling with?"
-            values={{
-              family: 'Family',
-              friends: 'Friends',
-              couple: 'Couple',
-              solo: 'Solo',
-            }}
-            value={values.travelWith}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          {needsToAskHowMany(values.travelWith) && (
-            <ZenbeeNumberInput
-              className={classes.formControlRight}
-              label="Voyagers"
-              name="voyagers"
-              min="1"
-              max="99"
-              value={values.voyagers}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          )}
-        </div>
-        <div className={classes.container}>
-          <ZenbeeSelect
-            className={classes.formControlFullWidth}
-            name="knowledge"
-            label="How well do you know the place?"
-            values={{
-              newbie: 'Newbie',
-              intermediate: 'Intermediate',
-              advanced: 'Advanced',
-              expert: 'Expert',
-            }}
-            value={values.knowledge}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </div>
-        <div className={classes.container}>
-          <ZenbeeSelect
-            className={classes.formControlFullWidth}
-            name="budget"
-            label={<span>What's your budget <span style={{ textTransform: 'none' }}>(excl. hotel & shopping)</span>?</span>}
-            values={{
-              low: 'Low (less than 100$)',
-              medium: 'Medium (between 100$ and 200$)',
-              high: 'High (between 200$ and 300$)',
-              veryHigh: 'Very high (more than 300$)',
-            }}
-            value={values.budget}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </div>
-        <div className={classes.submitButtonWrapper}>
-          <Button raised color="primary" className={classes.submitButton} type="submit" disabled={isSubmitting}>
-            Show me
-            <img src={submitIcon} alt="" className={classes.submitIcon}/>
-          </Button>
-        </div>
-      </form>
-    )
-  }
-}
-
 class ZenbeeForm extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
+  }
+
+  componentDidMount() {
+    ScrollEvents.scrollEvent.register('end', to => {
+      if (to === 'query-form') {
+        setTimeout(() => this.setState({ cityAutoFocus: true }), 1000)
+      }
+    })
+  }
+
+  componentWillUnmount() {
+    ScrollEvents.scrollEvent.remove('end')
+  }
+
+  needsToAskHowMany(travelWith) {
+    return ['friends', 'family'].includes(travelWith)
   }
 
   render() {
@@ -263,7 +163,7 @@ class ZenbeeForm extends React.Component {
           }}
           onSubmit={async (values, { setSubmitting }) => {
             const formData = { ...values }
-            if (!needsToAskHowMany(values.travelWith)) {
+            if (!this.needsToAskHowMany(values.travelWith)) {
               formData.voyagers = 2
             }
             formData.createdAt = new Date()
@@ -274,7 +174,115 @@ class ZenbeeForm extends React.Component {
             setSubmitting(false)
             history.push({ pathname: '/results', state: { formId: docRef.id } })
           }}
-          render={props => <InnerForm classes={classes} {...props} />}
+          render={({ values, touched, handleSubmit, handleChange, handleBlur, isSubmitting, errors }) =>
+            <form className={classes.form} autoComplete="off" onSubmit={handleSubmit}>
+              <div className={classes.container}>
+                <ZenbeeSelect
+                  className={classes.formControl}
+                  name="city"
+                  label="Where are you going?"
+                  values={{
+                    amsterdam: 'Amsterdam',
+                    barcelona: 'Barcelona',
+                    berlin: 'Berlin',
+                    florence: 'Florence',
+                    london: 'London',
+                    madrid: 'Madrid',
+                    moscow: 'Moscow',
+                    newyork: 'New York',
+                    paris: 'Paris',
+                    prague: 'Prague',
+                    rome: 'Rome',
+                    tokyo: 'Tokyo',
+                    venice: 'Venice',
+                    vienna: 'Vienna',
+                    washington: 'Washington',
+                  }}
+                  value={values.city}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.city && !!errors.city}
+                  helperText={errors.city}
+                />
+                <ZenbeeNumberInput
+                  className={classes.formControlRight}
+                  label="How many days?"
+                  name="days"
+                  min="1"
+                  max="99"
+                  value={values.days}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
+              <div className={classes.container}>
+                <ZenbeeSelect
+                  className={this.needsToAskHowMany(values.travelWith) ? classes.formControl : classes.formControlFullWidth}
+                  name="travelWith"
+                  label="Who are you travelling with?"
+                  values={{
+                    family: 'Family',
+                    friends: 'Friends',
+                    couple: 'Couple',
+                    solo: 'Solo',
+                  }}
+                  value={values.travelWith}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {this.needsToAskHowMany(values.travelWith) && (
+                  <ZenbeeNumberInput
+                    className={classes.formControlRight}
+                    label="Voyagers"
+                    name="voyagers"
+                    min="1"
+                    max="99"
+                    value={values.voyagers}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                )}
+              </div>
+              <div className={classes.container}>
+                <ZenbeeSelect
+                  className={classes.formControlFullWidth}
+                  name="knowledge"
+                  label="How well do you know the place?"
+                  values={{
+                    newbie: 'Newbie',
+                    intermediate: 'Intermediate',
+                    advanced: 'Advanced',
+                    expert: 'Expert',
+                  }}
+                  value={values.knowledge}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
+              <div className={classes.container}>
+                <ZenbeeSelect
+                  className={classes.formControlFullWidth}
+                  name="budget"
+                  label={<span>What's your budget <span style={{ textTransform: 'none' }}>(excl. hotel & shopping)</span>?</span>}
+                  values={{
+                    low: 'Low (less than 100$)',
+                    medium: 'Medium (between 100$ and 200$)',
+                    high: 'High (between 200$ and 300$)',
+                    veryHigh: 'Very high (more than 300$)',
+                  }}
+                  value={values.budget}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
+              <div className={classes.submitButtonWrapper}>
+                <Button raised color="primary" className={classes.submitButton} type="submit" disabled={isSubmitting}>
+                  Show me
+                  <img src={submitIcon} alt="" className={classes.submitIcon}/>
+                </Button>
+              </div>
+            </form>
+          }
         />
       </div>
     )

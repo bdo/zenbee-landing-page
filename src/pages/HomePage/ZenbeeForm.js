@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles'
 import { Button } from 'material-ui'
-import { Events as ScrollEvents } from 'react-scroll'
 import { Formik } from 'formik'
 import { compose } from 'recompose'
 import ZenbeeNumberInput from 'components/ZenbeeNumberInput'
@@ -120,18 +119,6 @@ class ZenbeeForm extends React.Component {
     history: PropTypes.object.isRequired,
   }
 
-  componentDidMount() {
-    ScrollEvents.scrollEvent.register('end', to => {
-      if (to === 'query-form') {
-        setTimeout(() => this.setState({ cityAutoFocus: true }), 1000)
-      }
-    })
-  }
-
-  componentWillUnmount() {
-    ScrollEvents.scrollEvent.remove('end')
-  }
-
   needsToAskHowMany(travelWith) {
     return ['friends', 'family'].includes(travelWith)
   }
@@ -152,12 +139,15 @@ class ZenbeeForm extends React.Component {
             knowledge: 'newbie',
             travelWith: 'solo',
             voyagers: 2,
-            budget: 'low',
+            budget: '',
           }}
           validate={values => {
             const errors = {}
             if (!values.city) {
               errors.city = 'Required'
+            }
+            if (!values.budget) {
+              errors.budget = 'Required'
             }
             return errors
           }}
@@ -269,10 +259,13 @@ class ZenbeeForm extends React.Component {
                     medium: 'Medium (between 100$ and 200$)',
                     high: 'High (between 200$ and 300$)',
                     veryHigh: 'Very high (more than 300$)',
+                    askMeLater: 'Ask me later',
                   }}
                   value={values.budget}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  error={touched.budget && !!errors.budget}
+                  helperText={errors.budget}
                 />
               </div>
               <div className={classes.submitButtonWrapper}>

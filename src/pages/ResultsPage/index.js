@@ -16,10 +16,7 @@ const styles = theme => ({
     justifyContent: 'initial',
     flexDirection: 'column',
     color: 'white',
-    background: `
-      url("${beeLeft}") no-repeat bottom 5% left 10%/90%,
-      linear-gradient(to left, #f45553, #f47553)
-    `,
+    background: 'linear-gradient(to left, #f45553, #f47553)',
     fontFamily: theme.typography.fontFamily,
     fontSize: '80%',
   },
@@ -43,6 +40,14 @@ const styles = theme => ({
   img: {
     maxWidth: '100%',
   },
+  keepTogether: {
+    whiteSpace: 'nowrap',
+  },
+  innerBee: {
+    width: '100%',
+    maxWidth: 550,
+    margin: '2rem -1rem',
+  },
   '@media (min-width: 480px)': {
     root: {
       fontSize: '100%',
@@ -52,10 +57,9 @@ const styles = theme => ({
     root: {
       paddingBottom: 0,
       fontSize: '100%',
-      background: `
-      url("${beeLeft}") no-repeat bottom 5% left 1%/30%,
-      linear-gradient(to left, #f45553, #f47553)
-    `,
+    },
+    innerBee: {
+      width: '70%',
     },
     contents: {
       paddingTop: '4rem',
@@ -72,8 +76,11 @@ const styles = theme => ({
     },
   },
   '@media (min-width: 1280px)': {
+    innerBee: {
+      margin: '4rem -7rem',
+    },
     root: {
-      padding: '2rem 7%',
+      padding: '2rem 7rem',
       margin: '25px auto',
       borderRadius: 20,
     },
@@ -88,15 +95,18 @@ const ResultsPage = ({ classes }) =>
     </h1>
     <section className={classes.contents}>
       <aside className={classes.form}>
-        <h2>
-          We are not fully ready yet.
-        </h2>
-        <p>
-          To be part of our beta testers and be informed
-          about the release of the service,
-          please leave us your email address : )
-        </p>
-        <EmailForm />
+        <div className={classes.formWrapper}>
+          <h2>
+            We are not fully ready yet.
+          </h2>
+          <p>
+            To be part of our beta testers and be informed
+            about the release of the service,
+            please leave us your email address <span className={classes.keepTogether}>: )</span>
+          </p>
+          <EmailForm />
+          <img className={classes.innerBee} src={beeLeft} alt="bee flying" />
+        </div>
       </aside>
       <aside className={classes.mobile}>
         <img className={classes.img} src={phoneImage} alt="mobile app"/>

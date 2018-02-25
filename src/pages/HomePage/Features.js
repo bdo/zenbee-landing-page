@@ -44,10 +44,10 @@ const styles = theme => ({
 
 const features = [
   { icon: weatherIcon, text: 'Weather forecasts' },
-  { icon: timeIcon, text: 'Waiting time' },
-  { icon: advicesIcon, text: 'Local blogs advice' },
+  { icon: timeIcon, text: 'Waiting times' },
+  { icon: advicesIcon, text: 'Bloggers\' advice' },
   { icon: eventsIcon, text: 'Events' },
-  { icon: restaurantsIcon, text: 'Restaurants' },
+  { icon: restaurantsIcon, text: 'Food' },
   { icon: monumentsIcon, text: 'Monuments' },
   { icon: shoppingIcon, text: 'Shopping' },
   { icon: transportsIcon, text: 'Transport' },

@@ -81,9 +81,9 @@ const Header = ({ classes }) =>
       Optimize you trip
     </Typography>
     <Typography type="headline" gutterBottom className={classes.subheading}>
-      Prepare simply and efficiently
+      Prepare your big-city stay
       <br />
-      your stay in the big touristic cities.
+      simply and efficiently.
     </Typography>
     <div className={classes.button}>
       <Button raised color="primary" onClick={scrollToForm}>

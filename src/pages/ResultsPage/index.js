@@ -91,7 +91,7 @@ const ResultsPage = ({ classes }) =>
   <div className={classes.root}>
     <h1>
       Thank you for your interest
-      in Zenbee travel assistant!
+      in Zenbee revolutionary travel assistant!
     </h1>
     <section className={classes.contents}>
       <aside className={classes.form}>

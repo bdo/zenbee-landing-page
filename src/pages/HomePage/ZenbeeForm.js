@@ -139,15 +139,15 @@ class ZenbeeForm extends React.Component {
             knowledge: 'newbie',
             travelWith: 'solo',
             voyagers: 2,
-            budget: '',
+            budget: 'askMeLater',
           }}
           validate={values => {
             const errors = {}
             if (!values.city) {
-              errors.city = 'Required'
+              errors.city = 'Tell us :)'
             }
             if (!values.budget) {
-              errors.budget = 'Required'
+              errors.budget = 'Tell us :)'
             }
             return errors
           }}

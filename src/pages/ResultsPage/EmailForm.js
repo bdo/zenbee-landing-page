@@ -8,6 +8,7 @@ import isEmail from 'validator/lib/isEmail'
 import * as firebase from 'firebase'
 import 'firebase/firestore'
 import submitIcon from 'theme/icons/ico-submit-orange.svg'
+import subscribeToZenbeeMailingList from './subscribe-to-zenbee-mailing-list'
 
 const styles = theme => ({
   textField: {
@@ -105,19 +106,21 @@ const EmailForm = withFormik({
   },
   handleSubmit: async (values, { props, setSubmitting }) => {
     const { location, history } = props
+    const email = values.email
     const formId = location.state && location.state.formId
     const betaUsers = firebase.firestore().collection('betaUsers')
     if (formId) {
         await betaUsers.doc(formId).update({
-          email: values.email,
+          email,
           updatedAt: new Date(),
         })
     } else {
       await betaUsers.add({
-        email: values.email,
+        email,
         createdAt: new Date(),
       })
     }
+    if (false) subscribeToZenbeeMailingList(email)
     setSubmitting(false)
     history.push({
       pathname: '/',

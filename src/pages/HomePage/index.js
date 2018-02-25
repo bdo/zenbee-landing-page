@@ -79,10 +79,12 @@ class HomePage extends React.Component {
           message={
             <span id="message-id">
               Congratulations!{' '}
-              <span style={{ fontSize: '150%' }} role="img" aria-label="party">🎉</span>
+              <span style={{ fontSize: '150%' }} role="img" aria-label="party">🎉</span><br/>
               <br/>
+              You are now registered in the Zenbee beta test program. Great to have you{' '}
+              <span style={{ fontSize: '150%' }} role="img" aria-label="heart">❤️</span>.<br/>
               <br/>
-              You have registered to the Zenbee beta program. We will notify you as soon as it becomes available!<br/>
+              We will keep you posted and notify you as soon as it starts.<br/>
               <br/>
               <div>The <img src={zenbeeLogo} alt="" style={{ display: 'inline-block', width: '3.4rem' }} /> team.</div>
             </span>

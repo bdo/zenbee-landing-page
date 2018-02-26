@@ -78,7 +78,7 @@ const Header = ({ classes }) =>
     <Typography type="title" gutterBottom className={classes.titleSection}>
       <img src={beeLeft} className={classes.beeLeft} alt="" />
       <img src={beeRight} className={classes.beeRight} alt="" />
-      Optimize you trip
+      Optimize your trip
     </Typography>
     <Typography type="headline" gutterBottom className={classes.subheading}>
       Prepare your big-city stay

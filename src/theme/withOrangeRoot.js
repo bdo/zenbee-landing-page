@@ -21,6 +21,9 @@ const theme = createMuiTheme({
       main: 'rgba(255, 255,255, 0.9)',
       dark: 'rgba(255, 255,255, 1.0)',
     },
+    error: {
+      main: '#ffffff',
+    },
   },
   overrides: {
     MuiButton: {

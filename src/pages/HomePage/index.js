@@ -33,6 +33,9 @@ const styles = theme => ({
     background: 'white',
     fontWeight: 'bold',
   },
+  snackBarMessage: {
+    paddingTop: '0.5rem',
+  },
 })
 
 class HomePage extends React.Component {
@@ -77,17 +80,17 @@ class HomePage extends React.Component {
             'aria-describedby': 'message-id',
           }}
           message={
-            <span id="message-id">
+            <div id="message-id" className={classes.snackBarMessage}>
               Congratulations!{' '}
-              <span style={{ fontSize: '150%' }} role="img" aria-label="party">🎉</span><br/>
+              <span role="img" aria-label="party">🎉</span><br/>
               <br/>
               You are now registered in the Zenbee beta test program. Great to have you{' '}
-              <span style={{ fontSize: '150%' }} role="img" aria-label="heart">❤️</span>.<br/>
+              <span role="img" aria-label="heart">❤️</span>.<br/>
               <br/>
               We will keep you posted and notify you as soon as it starts.<br/>
               <br/>
-              <div>The <img src={zenbeeLogo} alt="" style={{ display: 'inline-block', width: '3.4rem' }} /> team.</div>
-            </span>
+              <div>The <img src={zenbeeLogo} alt="Zenbee" style={{ display: 'inline-block', width: '3.4rem' }} /> team.</div>
+            </div>
           }
           action={[
             <IconButton

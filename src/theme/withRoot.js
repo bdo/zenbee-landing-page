@@ -43,7 +43,7 @@ const theme = createMuiTheme({
     MuiFormLabel: {
       root: {
         fontFamily: 'Graphik-Medium-Web',
-        fontSize: '0.7rem',
+        fontSize: '0.85rem',
         textTransform: 'uppercase',
         color: '#87888c',
       },

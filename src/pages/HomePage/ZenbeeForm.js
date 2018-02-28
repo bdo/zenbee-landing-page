@@ -253,7 +253,7 @@ class ZenbeeForm extends React.Component {
                 <ZenbeeSelect
                   className={classes.formControlFullWidth}
                   name="budget"
-                  label={<span>What's your budget <span style={{ textTransform: 'none' }}>(excl. hotel & shopping)</span>?</span>}
+                  label={<span>What's your budget <span style={{ textTransform: 'none' }}>(excl. hotel)</span>?</span>}
                   values={{
                     low: 'Low (less than 100$)',
                     medium: 'Medium (between 100$ and 200$)',

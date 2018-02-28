@@ -48,7 +48,7 @@ const theme = createMuiTheme({
     },
     MuiInput: {
       root: {
-        fontSize: '0.95rem',
+        fontSize: '0.8rem',
         fontWeight: 'bold',
         color: 'white',
       },
@@ -62,6 +62,13 @@ const theme = createMuiTheme({
         '&:hover:not($disabled):before': {
           backgroundColor: 'rgba(255, 255, 255, 0.7)',
         },
+      },
+    },
+    MuiInputLabel: {
+      shrink: {
+        '@media (max-width: 800px)': {
+          transform: 'translate(0, 1.5px)',
+        }
       },
     },
     MuiMenuItem: {

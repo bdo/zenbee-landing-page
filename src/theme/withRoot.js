@@ -48,6 +48,13 @@ const theme = createMuiTheme({
         color: '#87888c',
       },
     },
+    MuiInputLabel: {
+      shrink: {
+        '@media (max-width: 800px)': {
+          transform: 'translate(0, 1.5px)',
+        }
+      },
+    },
     MuiInput: {
       root: {
         fontSize: '0.95rem',

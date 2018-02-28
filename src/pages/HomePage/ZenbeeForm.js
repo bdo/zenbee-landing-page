@@ -99,10 +99,15 @@ const styles = theme => ({
       width: '66%',
     },
     formControl: {
+      marginBottom: 6 * theme.spacing.unit,
       width: `calc(66% - ${2 * theme.spacing.unit}px)`,
     },
     formControlRight: {
+      marginBottom: 6 * theme.spacing.unit,
       width: `calc(33% - ${2 * theme.spacing.unit}px)`,
+    },
+    formControlFullWidth: {
+      marginBottom: 6 * theme.spacing.unit,
     },
     submitButtonWrapper: {
       display: 'block',

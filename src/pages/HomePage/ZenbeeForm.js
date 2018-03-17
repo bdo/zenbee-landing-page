@@ -10,6 +10,7 @@ import ZenbeeSelect from 'components/ZenbeeSelect'
 import submitIcon from 'theme/icons/ico-submit.svg'
 import * as firebase from 'firebase'
 import 'firebase/firestore'
+import classNames from 'classnames'
 
 const styles = theme => ({
   root: {
@@ -49,14 +50,6 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    margin: `0 ${theme.spacing.unit}px ${4 * theme.spacing.unit}px`,
-    width: '100%',
-  },
-  formControlRight: {
-    margin: `0 ${theme.spacing.unit}px ${4 * theme.spacing.unit}px`,
-    width: '100%',
-  },
-  formControlFullWidth: {
     margin: `0 ${theme.spacing.unit}px ${4 * theme.spacing.unit}px`,
     width: '100%',
   },
@@ -100,14 +93,11 @@ const styles = theme => ({
     },
     formControl: {
       marginBottom: 6 * theme.spacing.unit,
-      width: `calc(66% - ${2 * theme.spacing.unit}px)`,
+      width: 'auto',
+      flex: 1,
     },
     formControlRight: {
-      marginBottom: 6 * theme.spacing.unit,
       width: `calc(33% - ${2 * theme.spacing.unit}px)`,
-    },
-    formControlFullWidth: {
-      marginBottom: 6 * theme.spacing.unit,
     },
     submitButtonWrapper: {
       display: 'block',
@@ -150,9 +140,6 @@ class ZenbeeForm extends React.Component {
             const errors = {}
             if (!values.city) {
               errors.city = 'Tell us :)'
-            }
-            if (!values.budget) {
-              errors.budget = 'Tell us :)'
             }
             return errors
           }}
@@ -200,7 +187,7 @@ class ZenbeeForm extends React.Component {
                   helperText={errors.city}
                 />
                 <ZenbeeNumberInput
-                  className={classes.formControlRight}
+                  className={classNames(classes.formControl, classes.formControlRight)}
                   label="How many days?"
                   name="days"
                   min="1"
@@ -212,7 +199,7 @@ class ZenbeeForm extends React.Component {
               </div>
               <div className={classes.container}>
                 <ZenbeeSelect
-                  className={this.needsToAskHowMany(values.travelWith) ? classes.formControl : classes.formControlFullWidth}
+                  className={classes.formControl}
                   name="travelWith"
                   label="Who are you travelling with?"
                   values={{
@@ -227,7 +214,7 @@ class ZenbeeForm extends React.Component {
                 />
                 {this.needsToAskHowMany(values.travelWith) && (
                   <ZenbeeNumberInput
-                    className={classes.formControlRight}
+                    className={classNames(classes.formControl, classes.formControlRight)}
                     label="Voyagers"
                     name="voyagers"
                     min="1"
@@ -240,7 +227,7 @@ class ZenbeeForm extends React.Component {
               </div>
               <div className={classes.container}>
                 <ZenbeeSelect
-                  className={classes.formControlFullWidth}
+                  className={classes.formControl}
                   name="knowledge"
                   label="How well do you know the place?"
                   values={{
@@ -256,9 +243,9 @@ class ZenbeeForm extends React.Component {
               </div>
               <div className={classes.container}>
                 <ZenbeeSelect
-                  className={classes.formControlFullWidth}
+                  className={classes.formControl}
                   name="budget"
-                  label={<span>What's your budget <span style={{ textTransform: 'none' }}>(excl. hotel)</span>?</span>}
+                  label={<span>What's your daily budget ?</span>}
                   values={{
                     low: 'Low (less than 100$)',
                     medium: 'Medium (between 100$ and 200$)',
@@ -269,8 +256,7 @@ class ZenbeeForm extends React.Component {
                   value={values.budget}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={touched.budget && !!errors.budget}
-                  helperText={errors.budget}
+                  helperText={<em>per person and excluding hotel</em>}
                 />
               </div>
               <div className={classes.submitButtonWrapper}>

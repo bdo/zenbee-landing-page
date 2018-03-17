@@ -29,6 +29,8 @@ const styles = theme => ({
   },
   subheading: {
     paddingTop: theme.spacing.unit * 2,
+    fontWeight: 600,
+    marginBottom: '0.75rem',
   },
   button: {
     paddingTop: theme.spacing.unit * 3,
@@ -50,6 +52,9 @@ const styles = theme => ({
     },
     titleSection: {
       paddingTop: theme.spacing.unit * 8,
+    },
+    subheading: {
+      marginBottom: 0,
     },
     bee: {
       display: 'none',

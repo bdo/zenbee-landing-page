@@ -49,9 +49,16 @@ const theme = createMuiTheme({
       },
     },
     MuiInputLabel: {
+      root: {
+        zIndex: 2,
+      },
+      formControl: {
+        transform: 'translate(0.6rem, calc(24px + 0.6rem))',
+      },
       shrink: {
+        transform: 'translate(0, -3.5px) scale(0.75);',
         '@media (max-width: 800px)': {
-          transform: 'translate(0, 1.5px)',
+          transform: 'translate(0, -3.5px)',
         }
       },
     },
@@ -60,6 +67,8 @@ const theme = createMuiTheme({
         fontSize: '0.95rem',
         fontWeight: 'bold',
         color: '#5D5F65',
+        padding: '0.6rem',
+        backgroundColor: '#FAFAFA',
       },
     },
     MuiMenuItem: {

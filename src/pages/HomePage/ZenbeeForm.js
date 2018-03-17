@@ -256,7 +256,7 @@ class ZenbeeForm extends React.Component {
                   value={values.budget}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  helperText={<em>per day, per person and excluding hotel</em>}
+                  helperText={<em>per person and excluding hotel</em>}
                 />
               </div>
               <div className={classes.submitButtonWrapper}>

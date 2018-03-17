@@ -53,7 +53,7 @@ const theme = createMuiTheme({
         zIndex: 2,
       },
       formControl: {
-        transform: 'translate(0.6rem, calc(24px + 0.6rem))',
+        transform: 'translate(0, calc(24px + 0.6rem))',
       },
       shrink: {
         transform: 'translate(0, -3.5px) scale(0.75);',

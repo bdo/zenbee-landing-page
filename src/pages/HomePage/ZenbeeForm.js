@@ -245,7 +245,7 @@ class ZenbeeForm extends React.Component {
                 <ZenbeeSelect
                   className={classes.formControl}
                   name="budget"
-                  label={<span>What's your daily budget ?</span>}
+                  label={<span>What's your daily budget?</span>}
                   values={{
                     low: 'Low (less than 100$)',
                     medium: 'Medium (between 100$ and 200$)',
@@ -256,7 +256,7 @@ class ZenbeeForm extends React.Component {
                   value={values.budget}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  helperText={<em>per person and excluding hotel</em>}
+                  helperText={<em>per day, per person and excluding hotel</em>}
                 />
               </div>
               <div className={classes.submitButtonWrapper}>
